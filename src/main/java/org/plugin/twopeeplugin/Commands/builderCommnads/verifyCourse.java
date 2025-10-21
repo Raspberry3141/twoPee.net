@@ -4,14 +4,17 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.plugin.twopeeplugin.Core.groupManager;
 import org.plugin.twopeeplugin.Utils.chatMessenger;
 import org.plugin.twopeeplugin.Core.courseBuilder;
 
 public class verifyCourse implements CommandExecutor {
     courseBuilder coursebuilder;
+    groupManager groupmanager;
 
-    public verifyCourse(courseBuilder cb) {
+    public verifyCourse(courseBuilder cb, groupManager gp) {
         coursebuilder = cb;
+        groupmanager = gp;
     }
 
     @Override
@@ -19,7 +22,7 @@ public class verifyCourse implements CommandExecutor {
         if (commandSender instanceof Player) {
             coursebuilder.setVerifiable((Player) commandSender,true);
             chatMessenger.sendVerifiable((Player) commandSender);
-            //TODO permission manager
+            groupmanager.leaveBuildingMode((Player) commandSender);
         }
         return false;
     }

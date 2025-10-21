@@ -69,10 +69,8 @@ features:
 #at this point, I should have a hub of worlds I can join with a click of button in gui
 [x] parkour(timer, checkpoint,progress, finish/start logic)
 
-
-
 # at this point, I should have a system where I can build parkour, verify it, and publish it
-[] permission(gamemode, commands)
+[x] permission(gamemode, commands)
 ------------------------------------------------------------------------------------------------------------------------------
 course:
  - initialize course
@@ -151,13 +149,26 @@ global:
 - disable gravity blocks from falling
 -----------------------------------------
 
-- progrese manager (on player leave, enter,manage timer, etc)
+- items: kb 1,2,3,10, left kb, right kb, checkpoint item, fishing rod,
+
 item manager:
-- give item
-- clear item on leave
+- item command
+- give item on start
+- remove items on leave
+
+
+- clean up map browser
+- filter by verified
+
+
+- prac
 
 
 TEST:
 - whitelits
 - verifcation system
 - mapmaker
+- tryign to crash the server
+- tp (place and remove)
+- try to get creative mode outside of world
+- mob griefing and all of gamerule event, bone meal, end, nether etc

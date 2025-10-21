@@ -17,7 +17,7 @@ public final class TwoPeePlugin extends JavaPlugin {
         guiEventListener guiListener = new guiEventListener();
         tpLocationManager tpmanager = new tpLocationManager();
         whiteListWorldManager whitelister = new whiteListWorldManager();
-        GroupManager groupManager = new GroupManager();
+        groupManager groupManager = new groupManager();
         timer = new parkourTimer();
         progressManager progressmanager = new progressManager(timer);
         getServer().getPluginManager().registerEvents(guiListener,this);
@@ -25,6 +25,7 @@ public final class TwoPeePlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(tpmanager,this);
         getServer().getPluginManager().registerEvents(new znpcListener(guiListener,groupManager),this);
         getServer().getPluginManager().registerEvents(new globalSettingEvents(progressmanager,groupManager),this);
+        getServer().getPluginManager().registerEvents(new knockbackEvent(),this);
         this.getCommand("test").setExecutor(new testCommand(coursebuilder,guiListener,progressmanager));
         this.getCommand("browse").setExecutor(new browseCourse(guiListener));
         this.getCommand("lobby").setExecutor(new lobby());
@@ -33,8 +34,8 @@ public final class TwoPeePlugin extends JavaPlugin {
         this.getCommand("mapbuilder").setExecutor(new mapbuilder(coursebuilder));
         this.getCommand("setnewspawn").setExecutor(new setSpawn());
         this.getCommand("setdisplay").setExecutor(new setDisplayWorldName());
-        this.getCommand("verify").setExecutor(new verifyCourse(coursebuilder));
-        this.getCommand("cancelverify").setExecutor(new cancelVerifyCourse(coursebuilder));
+        this.getCommand("verify").setExecutor(new verifyCourse(coursebuilder,groupManager));
+        this.getCommand("cancelverify").setExecutor(new cancelVerifyCourse(coursebuilder,groupManager));
         this.getCommand("gms").setExecutor(new gamemodeAdventure());
         this.getCommand("gmc").setExecutor(new gamemodeCreative());
         this.getCommand("fly").setExecutor(new fly());

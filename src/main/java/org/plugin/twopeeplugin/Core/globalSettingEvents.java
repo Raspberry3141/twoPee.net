@@ -2,6 +2,7 @@ package org.plugin.twopeeplugin.Core;
 
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
@@ -12,10 +13,8 @@ import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.InventoryOpenEvent;
-import org.bukkit.event.player.PlayerChangedWorldEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.*;
+import org.bukkit.util.Vector;
 import org.plugin.twopeeplugin.Utils.chatMessenger;
 import org.plugin.twopeeplugin.Utils.courseYamlConfig;
 
@@ -26,10 +25,29 @@ import static org.bukkit.Bukkit.getWorld;
 public class globalSettingEvents implements Listener {
 
     private progressManager progressmanager;
-    private GroupManager groupmanager;
-    public globalSettingEvents(progressManager pm,GroupManager gp) {
+    private groupManager groupmanager;
+
+    public globalSettingEvents(progressManager pm, groupManager gp) {
         progressmanager = pm;
         groupmanager = gp;
+    }
+
+    @EventHandler
+    public void onPlayerReelIn(PlayerFishEvent event) {
+        if (event.getState()== PlayerFishEvent.State.CAUGHT_ENTITY) {
+            Entity caught = event.getCaught();
+            Player player = event.getPlayer();
+
+            if (caught != null) {
+                Location playerLoc = player.getLocation();
+                Location entityLoc = caught.getLocation();
+
+                Vector pullVector = playerLoc.toVector().subtract(entityLoc.toVector()).normalize().multiply(0.5);
+                pullVector.setY(0.4);
+
+                caught.setVelocity(pullVector);
+            }
+        }
     }
 
     @EventHandler
@@ -38,6 +56,7 @@ public class globalSettingEvents implements Listener {
         if (event.getFrom()!=null) {
             progressmanager.leaveCourse(event.getPlayer(),event.getFrom().getName());
             groupmanager.leaveBuildingMode(event.getPlayer());
+            event.getPlayer().setGameMode(GameMode.ADVENTURE);
         }
         if (isACoures(event.getPlayer().getWorld().getName())) {
             progressmanager.enterCourse(event.getPlayer());
@@ -78,8 +97,18 @@ public class globalSettingEvents implements Listener {
             new WorldCreator("lobby").createWorld();
         }
         event.getPlayer().teleport(getWorld("lobby").getSpawnLocation());
-
+        if (!event.getPlayer().isOp()) {
+            setGroupBerry(event.getPlayer());
+            event.getPlayer().setGameMode(GameMode.ADVENTURE);
+        }
     }
+
+    private void setGroupBerry(Player player) {
+        if (!player.hasPlayedBefore()) {
+            groupmanager.setDefaultGroup(player);
+        }
+    }
+
     @EventHandler
     public void onCreatureSpawn(CreatureSpawnEvent event) {
         World world = event.getLocation().getWorld();

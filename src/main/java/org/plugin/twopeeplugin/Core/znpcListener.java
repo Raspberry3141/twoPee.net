@@ -7,9 +7,9 @@ import org.plugin.twopeeplugin.Utils.chatMessenger;
 
 public class znpcListener implements Listener {
     guiEventListener guilistner;
-    GroupManager groupmanager;
+    groupManager groupmanager;
 
-    public znpcListener(guiEventListener ge,GroupManager gm) {
+    public znpcListener(guiEventListener ge, groupManager gm) {
         guilistner = ge;
         groupmanager = gm;
     }

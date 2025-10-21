@@ -1,7 +1,7 @@
 name: two pee plugin
 version: '${project.version}'
 main: org.plugin.twopeeplugin.TwoPeePlugin
-api-version: '1.21'
+api-version: '1.8.8'
 
 permissions:
   twopee.build:
@@ -12,41 +12,42 @@ commands:
   test:
     usage: /test
     aliases: [ test ]
+    permission: twopee.op
   browse:
     usage: /browse
     aliases: [b,browser]
-    permission: .
+    permission:
     permission-message: You don't have permission to use this command!
   lobby:
     usage: /lobby
     aliases: [ l,lobby ]
-    permission: .
+    permission:
     permission-message: You don't have permission to use this command!
   pcp:
     usage: /pcp [#]
     aliases: [p, pcp]
-    permission: .
+    permission:
     permission-message: You don't have permission to use this command!
 
   gap:
     usage: /gap
     aliases: [ gap ]
-    permission: .
+    permission:
     permission-message: You don't have permission to use this command!
   sword:
     usage: /sword
     aliases: [ sword ]
-    permission: .
+    permission:
     permission-message: You don't have permission to use this command!
   join:
     usage: /join <mapid||player>
     aliases: [ j, join ]
-    permission: .
+    permission:
     permission-message: You don't have permission to use this command!
   invite:
     usage: /invite <player>
     aliases: [ i,invite ]
-    permission: .
+    permission:
     permission-message: You don't have permission to use this command!
 
   mapbuilder:

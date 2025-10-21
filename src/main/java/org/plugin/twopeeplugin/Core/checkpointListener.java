@@ -123,6 +123,10 @@ public class checkpointListener implements Listener {
     private void finishParkour(String worldName,UUID uuid,Player player) {
         int completion = config.getInt("course." + worldName + ".progress." + uuid + ".completion");
         config.set("course." + worldName + ".progress." + uuid + ".completion", ++completion);
+        int playerTotalCompletion = playerYamlConfig.getConfig().getInt(player.getName() + ".completion");
+        playerYamlConfig.getConfig().set(player.getName() + ".completion",++playerTotalCompletion);
+        playerYamlConfig.getInstance().save();
+        config.set("course." + worldName + ".progress." + uuid + ".completion", ++completion);
         chatMessenger.sendParkourEnd(player, progressmanager.getFormattedTime(player));
         failParkour(worldName,uuid);
         progressmanager.leaveCourse(player);
