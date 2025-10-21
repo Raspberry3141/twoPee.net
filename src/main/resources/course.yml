@@ -1,0 +1,25 @@
+course.yml:
+  - [course1]:
+      author: [author]
+      date: [mm/dd/yyyyy]
+      display name: [display name]
+      verified: [bool]
+      verifiable: [bool]
+      leaderboard:
+        - [player name]:
+            time:
+              hours: []
+              minutes: []
+              seconds: []
+      checkpoint:
+        - [x] [y] [z]
+        - [x] [y] [z]
+      progress:
+        - [player uuid]:
+            last pos:  [x] [y] [z] [yaw] [pitch]
+            last cp: [checkpoint index]
+            completion [# of completion]
+            time:
+              hours: []
+              minutes: []
+              seconds: []

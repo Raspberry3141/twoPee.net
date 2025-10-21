@@ -1,0 +1,107 @@
+name: two pee plugin
+version: '${project.version}'
+main: org.plugin.twopeeplugin.TwoPeePlugin
+api-version: '1.21'
+
+permissions:
+  twopee.build:
+    description: Build mode
+    default: op
+
+commands:
+  test:
+    usage: /test
+    aliases: [ test ]
+  browse:
+    usage: /browse
+    aliases: [b,browser]
+    permission: .
+    permission-message: You don't have permission to use this command!
+  lobby:
+    usage: /lobby
+    aliases: [ l,lobby ]
+    permission: .
+    permission-message: You don't have permission to use this command!
+  pcp:
+    usage: /pcp [#]
+    aliases: [p, pcp]
+    permission: .
+    permission-message: You don't have permission to use this command!
+
+  gap:
+    usage: /gap
+    aliases: [ gap ]
+    permission: .
+    permission-message: You don't have permission to use this command!
+  sword:
+    usage: /sword
+    aliases: [ sword ]
+    permission: .
+    permission-message: You don't have permission to use this command!
+  join:
+    usage: /join <mapid||player>
+    aliases: [ j, join ]
+    permission: .
+    permission-message: You don't have permission to use this command!
+  invite:
+    usage: /invite <player>
+    aliases: [ i,invite ]
+    permission: .
+    permission-message: You don't have permission to use this command!
+
+  mapbuilder:
+    usage: /mapbuilder
+    aliases: [ mapbuilder ]
+    permission: twopee.build
+    permission-message: You don't have permission to use this command!
+  setnewspawn:
+    usage: /setspawn
+    aliases: [ setnewspawn ]
+    permission: twopee.build
+    permission-message: You don't have permission to use this command!
+  setdisplay:
+    usage: /setdisplay <str>
+    aliases: [ setdisplay ]
+    permission: twopee.build
+    permission-message: You don't have permission to use this command!
+  verify:
+    usage: /verify <player>
+    aliases: [ verify ]
+    permission: twopee.build
+    permission-message: You don't have permission to use this command!
+  cancelverify:
+    usage: /cancelverify <player>
+    aliases: [ cancelverify ]
+    permission: twopee.build
+    permission-message: You don't have permission to use this command!
+  gms:
+    usage: /gms
+    aliases: [ gms ]
+    permission: twopee.build
+    permission-message: You don't have permission to use this command!
+  gmc:
+    usage: /gmc
+    aliases: [ gmc ]
+    permission: twopee.build
+    permission-message: You don't have permission to use this command!
+  fly:
+    usage: /fly
+    aliases: [ fly ]
+    permission: twopee.build
+    permission-message: You don't have permission to use this command!
+  tpblock:
+    usage: /tpblock <x> <y> <z> <yaw> <pitch>
+    aliases: [ tpblock ]
+    permission: twopee.build
+    permission-message: You don't have permission to use this command!
+  platform:
+    usage: /platform
+    aliases: [platform]
+    permission: twopee.build
+    permission-message: You don't have permission to use this command!
+  whitelist:
+    usage: /whitelist [add|remove|clear|enable|disable] <player>
+    aliases: [ whitelist ]
+    permission: twopee.build
+    permission-message: You don't have permission to use this command!
+
