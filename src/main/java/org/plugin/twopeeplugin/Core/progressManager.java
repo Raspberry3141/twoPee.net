@@ -37,10 +37,13 @@ public class progressManager {
         parkourtimer.stopTime(player.getUniqueId(),player.getWorld().getName());
         saveLastPos(player);
     }
+
     public void leaveCourse(Player player,String worldName) {
         parkourtimer.stopTime(player.getUniqueId(),worldName);
         saveLastPos(player);
     }
+
+
 
     private void saveLastPos(Player player) {
         Location pos = player.getLocation();

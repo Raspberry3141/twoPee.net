@@ -142,26 +142,23 @@ global:
 - tp from void
 - max 40 players
 - make sword weak
-- world border
+- world border`
 - clear weather
 - set time
 - disable water lava flowing
 - disable gravity blocks from falling
 -----------------------------------------
-
-- items: kb 1,2,3,10, left kb, right kb, checkpoint item, fishing rod,
+- items: kb 1,2,3,10, left kb, right kb fishing rod
 
 item manager:
 - item command
 - give item on start
 - remove items on leave
 
-
 - clean up map browser
 - filter by verified
 
-
-- prac
+- prac, pcp item
 
 
 TEST:
