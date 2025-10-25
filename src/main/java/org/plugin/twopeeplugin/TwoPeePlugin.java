@@ -18,13 +18,14 @@ public final class TwoPeePlugin extends JavaPlugin {
         tpLocationManager tpmanager = new tpLocationManager();
         whiteListWorldManager whitelister = new whiteListWorldManager();
         groupManager groupManager = new groupManager();
+        itemManager itemmanager = new itemManager();
         timer = new parkourTimer();
-        progressManager progressmanager = new progressManager(timer);
+        progressManager progressmanager = new progressManager(timer,itemmanager);
         getServer().getPluginManager().registerEvents(guiListener,this);
         getServer().getPluginManager().registerEvents(new checkpointListener(progressmanager), this);
         getServer().getPluginManager().registerEvents(tpmanager,this);
         getServer().getPluginManager().registerEvents(new znpcListener(guiListener,groupManager),this);
-        getServer().getPluginManager().registerEvents(new globalSettingEvents(progressmanager,groupManager),this);
+        getServer().getPluginManager().registerEvents(new globalSettingEvents(progressmanager,groupManager,itemmanager),this);
         getServer().getPluginManager().registerEvents(new knockbackEvent(),this);
         this.getCommand("test").setExecutor(new testCommand(coursebuilder,guiListener,progressmanager));
         this.getCommand("browse").setExecutor(new browseCourse(guiListener));

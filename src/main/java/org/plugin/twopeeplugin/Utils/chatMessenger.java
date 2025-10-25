@@ -10,6 +10,11 @@ import org.bukkit.entity.Player;
 
 public class chatMessenger {
 
+    public static void sendItemGiven(Player player, String itemName) {
+        player.sendMessage(ChatColor.YELLOW + "You got "+itemName + "!");
+        playLevelUpSound(player);
+    }
+
     public static void sendUpdateRank(Player player, String rank) {
         player.sendMessage(ChatColor.YELLOW + "Ranked up! you are now "+rank);
         playLevelUpSound(player);

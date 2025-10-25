@@ -20,16 +20,19 @@ import org.plugin.twopeeplugin.Utils.courseYamlConfig;
 
 import java.util.*;
 
+import static org.bukkit.Bukkit.getPlayer;
 import static org.bukkit.Bukkit.getWorld;
 
 public class globalSettingEvents implements Listener {
 
     private progressManager progressmanager;
     private groupManager groupmanager;
+    private itemManager itemmanager;
 
-    public globalSettingEvents(progressManager pm, groupManager gp) {
+    public globalSettingEvents(progressManager pm, groupManager gp,itemManager im) {
         progressmanager = pm;
         groupmanager = gp;
+        itemmanager = im;
     }
 
     @EventHandler
@@ -52,7 +55,6 @@ public class globalSettingEvents implements Listener {
 
     @EventHandler
     public void onPlayerChangeWorld(PlayerChangedWorldEvent event) {
-        event.getPlayer().getInventory().clear();
         if (event.getFrom()!=null) {
             progressmanager.leaveCourse(event.getPlayer(),event.getFrom().getName());
             groupmanager.leaveBuildingMode(event.getPlayer());
@@ -64,6 +66,7 @@ public class globalSettingEvents implements Listener {
                 groupmanager.enterBuildingMode(event.getPlayer());
             }
         }
+        itemmanager.resetInventory(event.getPlayer());
     }
 
     private boolean isBuildingMode(String worldName) {

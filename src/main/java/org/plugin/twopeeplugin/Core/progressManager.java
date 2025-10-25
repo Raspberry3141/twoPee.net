@@ -5,6 +5,7 @@ import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.plugin.twopeeplugin.Utils.chatMessenger;
 import org.plugin.twopeeplugin.Utils.courseYamlConfig;
 
@@ -15,35 +16,40 @@ import static org.bukkit.Bukkit.getWorld;
 public class progressManager {
     private parkourTimer parkourtimer;
     private YamlConfiguration config;
-    public progressManager(parkourTimer timer) {
+    private itemManager itemmanager;
+    public progressManager(parkourTimer timer, itemManager im) {
         config = courseYamlConfig.getConfig();
         parkourtimer = timer;
+        itemmanager = im;
     }
+
 
     public void enterCourse(Player player) {
         if (!(player.getWorld()==null)) {
             parkourtimer.startTime(player.getUniqueId(),player.getWorld().getName());
             tpToLastPos(player);
+            itemmanager.loadInventory(player);
         }
     }
 
     public void startCourse(Player player) {
         if (!(player.getWorld()==null)) {
             parkourtimer.startTime(player.getUniqueId(),player.getWorld().getName());
+            itemmanager.loadInventory(player);
         }
     }
 
     public void leaveCourse(Player player) {
         parkourtimer.stopTime(player.getUniqueId(),player.getWorld().getName());
         saveLastPos(player);
+        itemmanager.saveInventory(player);
     }
 
     public void leaveCourse(Player player,String worldName) {
         parkourtimer.stopTime(player.getUniqueId(),worldName);
         saveLastPos(player);
+        itemmanager.saveInventory(player);
     }
-
-
 
     private void saveLastPos(Player player) {
         Location pos = player.getLocation();
