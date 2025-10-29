@@ -21,12 +21,12 @@ import java.util.UUID;
 
 public class checkpointListener implements Listener {
     YamlConfiguration config = courseYamlConfig.getConfig();
+    pracManager pracmanager;
     progressManager progressmanager;
-    public checkpointListener(progressManager pr) {
+    public checkpointListener(progressManager pr,pracManager prm) {
         progressmanager = pr;
-
+        pracmanager = prm;
     }
-
 
     @EventHandler
     public void onPlateStepped(PlayerInteractEvent event) {
@@ -36,8 +36,10 @@ public class checkpointListener implements Listener {
                 int y = event.getClickedBlock().getY();
                 int z = event.getClickedBlock().getZ();
                 if (isACourse(event.getPlayer().getWorld().getName())) {
-                    int newCp = findCheckpointIndex(event.getPlayer().getWorld().getName(),x,y,z);
-                    updateCheckpoint(event.getPlayer(),newCp);
+                    if (!pracmanager.isInPrac(event.getPlayer())) {
+                        int newCp = findCheckpointIndex(event.getPlayer().getWorld().getName(),x,y,z);
+                        updateCheckpoint(event.getPlayer(),newCp);
+                    }
                 }
             }
         }

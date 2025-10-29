@@ -6,29 +6,28 @@ import org.plugin.twopeeplugin.TwoPeePlugin;
 import java.io.File;
 import java.io.IOException;
 
-public class courseYamlConfig {
-    private static courseYamlConfig courseYaml;
+public class itemYamlConfig {
+    private static itemYamlConfig itemYaml;
     private File file;
     private YamlConfiguration config;
-    private courseYamlConfig() {
+    private itemYamlConfig() {
         setupFileConfig();
     }
 
     public static YamlConfiguration getConfig() {
-        if (courseYaml ==null) {
-            courseYaml = new courseYamlConfig();
+        if (itemYaml ==null) {
+            itemYaml = new itemYamlConfig();
         }
-        return courseYaml.config;
+        return itemYaml.config;
     }
 
-    public static courseYamlConfig getInstance() {
-        if (courseYaml ==null) {
-            courseYaml = new courseYamlConfig();
+    public static itemYamlConfig getInstance() {
+        if (itemYaml ==null) {
+            itemYaml = new itemYamlConfig();
         }
-        return courseYaml;
+        return itemYaml;
     }
 
-    //TODO:ADD ASYNCHRONOUS DATA WRITING AND READING
     public void save() {
         try {
             config.save(file);
@@ -39,7 +38,7 @@ public class courseYamlConfig {
     }
 
     private void setupFileConfig() {
-        file = new File(TwoPeePlugin.getInstance().getDataFolder(),"course.yml");
+        file = new File(TwoPeePlugin.getInstance().getDataFolder(),"item.yml");
         if (!file.exists()) {
             try {
                 file.getParentFile().mkdirs();

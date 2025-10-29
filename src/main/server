@@ -59,6 +59,9 @@ players.yml
     uuid:
         coures: [courseid]
 
+item.yml:
+[x] [y] [z] [world]: [item meta]
+
 commands:
 	- /pcp
 	- /createmap
@@ -111,6 +114,7 @@ comamnds:
     - tpsign [x] [y] [z] [yaw] [pitch]
     - platform (setblock spawn)
     - whitelist
+    - itemblock
 --------------------------------------------
 permission manager:
 - two.pee.build
@@ -150,14 +154,27 @@ global:
 - disable water lava flowing
 - disable gravity blocks from falling
 -----------------------------------------
-
+prac mode:
+    - disable hitting player
+    - disable buttons and pressure plate and buttons
+-----------------------------------------
+- item giveing button
 - progrese manager (on player leave, enter,manage timer, etc)
+- prac
+
 item manager:
 - give item
 - clear item on leave
+
+main course maps:
+[course]:
+    .[id]
+    .[difficulty]
+    .[completed]
 
 
 TEST:
 - whitelits
 - verifcation system
 - mapmaker
+- nametag

@@ -14,19 +14,37 @@ import java.util.*;
 public class itemManager {
 
     public void saveInventory(Player player) {
-        inventoryYamlConfig.getConfig().set(player.getWorld().getName()+"."+player.getUniqueId()+".inventory", player.getInventory().getContents());
-        inventoryYamlConfig.getConfig().set(player.getWorld().getName()+"."+player.getUniqueId()+".armor", player.getInventory().getArmorContents());
+        ItemStack[] main = player.getInventory().getContents();
+        inventoryYamlConfig.getConfig().set(player.getWorld().getName()+"."+player.getUniqueId()+".inventory", null);
+        for (int i = 0; i < main.length; i++) {
+            ItemStack item = main[i];
+            inventoryYamlConfig.getConfig().set(player.getWorld().getName()+"."+player.getUniqueId()+".inventory." + i, item);
+        }
+        inventoryYamlConfig.getInstance().save();
+    }
+
+    public void saveInventory(Player player, String worldName) {
+        ItemStack[] main = player.getInventory().getContents();
+        inventoryYamlConfig.getConfig().set(worldName+"."+player.getUniqueId()+".inventory", null);
+        inventoryYamlConfig.getInstance().save();
+        for (int i = 0; i < main.length; i++) {
+            ItemStack item = main[i];
+            inventoryYamlConfig.getConfig().set(worldName+"."+player.getUniqueId()+".inventory." + i, item);
+        }
         inventoryYamlConfig.getInstance().save();
     }
 
     public void loadInventory(Player player) {
-        List<ItemStack> contents = (List<ItemStack>) inventoryYamlConfig.getConfig().get(player.getWorld().getName()+"."+player.getUniqueId()+"inventory");
-        ItemStack[] inv = new ItemStack[contents.size()];
-        inv = contents.toArray(inv);
-        if (inv!=null) {
-            player.getInventory().setContents(inv);
+        player.getInventory().clear();
+        player.getInventory().setArmorContents(new ItemStack[4]);
+        for (String key : inventoryYamlConfig.getConfig().getConfigurationSection(player.getWorld().getName()+"."+player.getUniqueId()+".inventory").getKeys(false)) {
+            ItemStack item = inventoryYamlConfig.getConfig().getItemStack(player.getWorld().getName()+"."+player.getUniqueId()+".inventory." + key);
+            //item.setAmount(inventoryYamlConfig.getConfig().getInt(player.getWorld().getName()+"."+player.getUniqueId()+".inventory." + key));
+            item.setAmount(1);
+            if (item != null) {
+                player.getInventory().setItem(Integer.parseInt(key), item);
+            }
         }
-        player.updateInventory();
     }
 
     public void resetInventory(Player player) {

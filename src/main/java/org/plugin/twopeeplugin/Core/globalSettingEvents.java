@@ -20,7 +20,6 @@ import org.plugin.twopeeplugin.Utils.courseYamlConfig;
 
 import java.util.*;
 
-import static org.bukkit.Bukkit.getPlayer;
 import static org.bukkit.Bukkit.getWorld;
 
 public class globalSettingEvents implements Listener {
@@ -55,18 +54,26 @@ public class globalSettingEvents implements Listener {
 
     @EventHandler
     public void onPlayerChangeWorld(PlayerChangedWorldEvent event) {
+        onLeave(event);
+        onEnter(event);
+    }
+
+    private void onLeave(PlayerChangedWorldEvent event) {
         if (event.getFrom()!=null) {
             progressmanager.leaveCourse(event.getPlayer(),event.getFrom().getName());
             groupmanager.leaveBuildingMode(event.getPlayer());
             event.getPlayer().setGameMode(GameMode.ADVENTURE);
         }
+    }
+
+    private void onEnter(PlayerChangedWorldEvent event) {
         if (isACoures(event.getPlayer().getWorld().getName())) {
+            //TODO: LAST POS NOT WORKING
             progressmanager.enterCourse(event.getPlayer());
             if (isBuildingMode(event.getPlayer().getWorld().getName())) {
                 groupmanager.enterBuildingMode(event.getPlayer());
             }
         }
-        itemmanager.resetInventory(event.getPlayer());
     }
 
     private boolean isBuildingMode(String worldName) {

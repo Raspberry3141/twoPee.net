@@ -10,13 +10,21 @@ import org.bukkit.entity.Player;
 
 public class chatMessenger {
 
+    public static void sendPracEnter(Player player) {
+        player.sendMessage(ChatColor.YELLOW + "Entering Practice Mode..");
+    }
+
+    public static void sendPracLeave(Player player) {
+        player.sendMessage(ChatColor.YELLOW + "Leaving Practice Mode..");
+    }
+
     public static void sendItemGiven(Player player, String itemName) {
         player.sendMessage(ChatColor.YELLOW + "You got "+itemName + "!");
         playLevelUpSound(player);
     }
 
     public static void sendUpdateRank(Player player, String rank) {
-        player.sendMessage(ChatColor.YELLOW + "Ranked up! you are now "+rank);
+        player.sendMessage(ChatColor.YELLOW + "Ranked up! You Are Now "+rank);
         playLevelUpSound(player);
     }
     public static void sendCurrentCompletions(Player player, int completion) {

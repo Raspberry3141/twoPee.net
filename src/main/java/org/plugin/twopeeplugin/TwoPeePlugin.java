@@ -13,20 +13,25 @@ public final class TwoPeePlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        itemManager itemmanager = new itemManager();
+        timer = new parkourTimer();
+        pracManager pracmanager = new pracManager();
         courseBuilder coursebuilder = new courseBuilder();
         guiEventListener guiListener = new guiEventListener();
+        giveItemManager giveitemmanager  = new giveItemManager(pracmanager);
         tpLocationManager tpmanager = new tpLocationManager();
         whiteListWorldManager whitelister = new whiteListWorldManager();
         groupManager groupManager = new groupManager();
-        itemManager itemmanager = new itemManager();
-        timer = new parkourTimer();
         progressManager progressmanager = new progressManager(timer,itemmanager);
         getServer().getPluginManager().registerEvents(guiListener,this);
-        getServer().getPluginManager().registerEvents(new checkpointListener(progressmanager), this);
+        getServer().getPluginManager().registerEvents(new checkpointListener(progressmanager,pracmanager), this);
         getServer().getPluginManager().registerEvents(tpmanager,this);
         getServer().getPluginManager().registerEvents(new znpcListener(guiListener,groupManager),this);
         getServer().getPluginManager().registerEvents(new globalSettingEvents(progressmanager,groupManager,itemmanager),this);
-        getServer().getPluginManager().registerEvents(new knockbackEvent(),this);
+        getServer().getPluginManager().registerEvents(new knockbackEvent(pracmanager),this);
+        getServer().getPluginManager().registerEvents(giveitemmanager,this);
+        getServer().getPluginManager().registerEvents(pracmanager,this);
+        getServer().getPluginManager().registerEvents(new itemEvent(pracmanager,progressmanager),this);
         this.getCommand("test").setExecutor(new testCommand(coursebuilder,guiListener,progressmanager));
         this.getCommand("browse").setExecutor(new browseCourse(guiListener));
         this.getCommand("lobby").setExecutor(new lobby());
@@ -45,6 +50,9 @@ public final class TwoPeePlugin extends JavaPlugin {
         this.getCommand("invite").setExecutor(new invitePlayer());
         this.getCommand("join").setExecutor(new join());
         this.getCommand("whitelist").setExecutor(new whitelistCommand(whitelister));
+        this.getCommand("itemblock").setExecutor(new itemBlock(giveitemmanager));
+        this.getCommand("prac").setExecutor(new prac(pracmanager));
+        this.getCommand("unprac").setExecutor(new unprac(pracmanager));
         new placeHolderAPIExpansion(progressmanager).register();
 
     }

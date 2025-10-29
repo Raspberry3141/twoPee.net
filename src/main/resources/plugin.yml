@@ -49,6 +49,16 @@ commands:
     aliases: [ i,invite ]
     permission:
     permission-message: You don't have permission to use this command!
+  prac:
+    usage: /prac
+    aliases: [prac]
+    permission:
+      permission-message: You don't have permission to use this command!
+  unprac:
+    usage: /unprac
+    aliases: [ u, unprac ]
+    permission:
+      permission-message: You don't have permission to use this command!
 
   mapbuilder:
     usage: /mapbuilder
@@ -103,6 +113,11 @@ commands:
   whitelist:
     usage: /whitelist [add|remove|clear|enable|disable] <player>
     aliases: [ whitelist ]
+    permission: twopee.build
+    permission-message: You don't have permission to use this command!
+  itemblock:
+    usage: /itemblock <item> <level>
+    aliases: [ itemblock ]
     permission: twopee.build
     permission-message: You don't have permission to use this command!
 

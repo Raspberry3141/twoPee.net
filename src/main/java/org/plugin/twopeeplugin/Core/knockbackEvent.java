@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.util.Vector;
 import org.plugin.twopeeplugin.TwoPeePlugin;
 
@@ -17,29 +18,40 @@ public class knockbackEvent implements Listener {
     final double knockbackVerticalLimit = 0.4D;
     final double knockbackExtraHorizontal = 0.5D;
     final double knockbackExtraVertical = 0.1D;
+    private pracManager pracmanager;
+
+    public knockbackEvent(pracManager p) {
+        pracmanager =p;
+    }
 
     @EventHandler
     public void onPlayerHit(EntityDamageByEntityEvent event) {
         if (!(event.getDamager() instanceof Player)) return;
         Player attacker = (Player) event.getDamager();
+        if (pracmanager.isInPrac(attacker)) return;
         Entity victim = event.getEntity();
+        switch (attacker.getItemInHand().getType()) {
+            case BLAZE_ROD:
+                cancelKb(event,attacker,victim);
+                dealKnockback(victim,leftTransformKb(calcualteKnockback(victim,attacker)));
+                break;
+            case BONE:
+                cancelKb(event,attacker,victim);
+                dealKnockback(victim,rightTransformKb(calcualteKnockback(victim,attacker)));
+                break;
+            case WOOD_HOE:
+                cancelKb(event,attacker,victim);
+                dealKnockback(victim,invertKb(calcualteKnockback(victim,attacker)));
+                break;
+        }
+    }
+
+    private void cancelKb(EntityDamageEvent event, Player attacker, Entity victim) {
         double damageAmount = event.getDamage();
         event.setCancelled(true);
         if (victim instanceof  Player) ((Player) victim).damage(damageAmount, attacker);
         else {
             ((LivingEntity) victim).damage(damageAmount);
-        }
-
-        switch (attacker.getItemInHand().getType()) {
-            case BLAZE_ROD:
-                dealKnockback(victim,leftTransformKb(calcualteKnockback(victim,attacker)));
-                break;
-            case BONE:
-                dealKnockback(victim,rightTransformKb(calcualteKnockback(victim,attacker)));
-                break;
-            case WOOD_HOE:
-                dealKnockback(victim,invertKb(calcualteKnockback(victim,attacker)));
-                break;
         }
     }
 
