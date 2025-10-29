@@ -26,12 +26,10 @@ public class globalSettingEvents implements Listener {
 
     private progressManager progressmanager;
     private groupManager groupmanager;
-    private itemManager itemmanager;
 
-    public globalSettingEvents(progressManager pm, groupManager gp,itemManager im) {
+    public globalSettingEvents(progressManager pm, groupManager gp) {
         progressmanager = pm;
         groupmanager = gp;
-        itemmanager = im;
     }
 
     @EventHandler
@@ -53,14 +51,21 @@ public class globalSettingEvents implements Listener {
     }
 
     @EventHandler
+    public void beforePlayerChangeWorld(PlayerTeleportEvent event) {
+        if (!event.getFrom().getWorld().equals(event.getTo().getWorld())) {
+            onLeave(event);
+        }
+    }
+
+    @EventHandler
     public void onPlayerChangeWorld(PlayerChangedWorldEvent event) {
-        onLeave(event);
+        event.getPlayer().getInventory().clear();
         onEnter(event);
     }
 
-    private void onLeave(PlayerChangedWorldEvent event) {
+    private void onLeave(PlayerTeleportEvent event) {
         if (event.getFrom()!=null) {
-            progressmanager.leaveCourse(event.getPlayer(),event.getFrom().getName());
+            progressmanager.leaveCourse(event.getPlayer());
             groupmanager.leaveBuildingMode(event.getPlayer());
             event.getPlayer().setGameMode(GameMode.ADVENTURE);
         }

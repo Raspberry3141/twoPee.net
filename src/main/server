@@ -147,7 +147,6 @@ global:
 - saturation max
 - tp from void
 - max 40 players
-- make sword weak
 - world border
 - clear weather
 - set time
@@ -161,16 +160,9 @@ prac mode:
 - item giveing button
 - progrese manager (on player leave, enter,manage timer, etc)
 - prac
-
 item manager:
 - give item
 - clear item on leave
-
-main course maps:
-[course]:
-    .[id]
-    .[difficulty]
-    .[completed]
 
 
 TEST:
@@ -178,3 +170,9 @@ TEST:
 - verifcation system
 - mapmaker
 - nametag
+
+main course maps:
+[course]:
+    .[id]
+    .[difficulty]
+    .[completed]

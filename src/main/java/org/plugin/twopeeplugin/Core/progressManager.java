@@ -45,12 +45,6 @@ public class progressManager {
         itemmanager.saveInventory(player);
     }
 
-    public void leaveCourse(Player player,String worldName) {
-        parkourtimer.stopTime(player.getUniqueId(),worldName);
-        saveLastPos(player);
-        itemmanager.saveInventory(player, worldName);
-    }
-
     private void saveLastPos(Player player) {
         Location pos = player.getLocation();
         String worldName = player.getWorld().getName();

@@ -36,12 +36,15 @@ public class itemManager {
 
     public void loadInventory(Player player) {
         player.getInventory().clear();
-        player.getInventory().setArmorContents(new ItemStack[4]);
         for (String key : inventoryYamlConfig.getConfig().getConfigurationSection(player.getWorld().getName()+"."+player.getUniqueId()+".inventory").getKeys(false)) {
             ItemStack item = inventoryYamlConfig.getConfig().getItemStack(player.getWorld().getName()+"."+player.getUniqueId()+".inventory." + key);
-            //item.setAmount(inventoryYamlConfig.getConfig().getInt(player.getWorld().getName()+"."+player.getUniqueId()+".inventory." + key));
-            item.setAmount(1);
             if (item != null) {
+                int amount = inventoryYamlConfig.getConfig().getInt(player.getWorld().getName()+"."+player.getUniqueId()+".inventory." + key);
+                if (amount==0) {
+                    item.setAmount(1);
+                } else {
+                    item.setAmount(amount);
+                }
                 player.getInventory().setItem(Integer.parseInt(key), item);
             }
         }

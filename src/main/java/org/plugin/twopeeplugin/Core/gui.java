@@ -70,17 +70,21 @@ public class gui {
         List<String> courseNames = new ArrayList<>(courseNamesSet);
         for (String course:courseNames) {
             ItemStack item = new ItemStack(Material.IRON_DOOR);
-            ItemMeta meta = item.getItemMeta();
-            ArrayList<String> lore = new ArrayList<String>();
-            lore.add(course);
-            lore.add("Author: " + config.getString("course."+course+".author"));
-            lore.add("Date: " + config.getString("course."+course+".date"));
-            meta.setDisplayName(config.getString("course."+course+".display name"));
-            meta.setLore(lore);
-            item.setItemMeta(meta);
+            addInfo(item,course);
             courseItems.add(item);
         }
         return courseItems;
+    }
+
+    private void addInfo(ItemStack item, String course) {
+        ItemMeta meta = item.getItemMeta();
+        ArrayList<String> lore = new ArrayList<String>();
+        lore.add(course);
+        lore.add("Author: " + config.getString("course."+course+".author"));
+        lore.add("Date: " + config.getString("course."+course+".date"));
+        meta.setDisplayName(config.getString("course."+course+".display name"));
+        meta.setLore(lore);
+        item.setItemMeta(meta);
     }
 
     private void fillInItems(List<ItemStack> items) {
