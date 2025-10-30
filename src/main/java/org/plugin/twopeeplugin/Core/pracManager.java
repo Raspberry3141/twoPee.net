@@ -13,6 +13,7 @@ import java.util.HashMap;
 
 public class pracManager implements Listener {
     private HashMap<Player, Location> pracLocation;
+	private progressManager progressmanager;
 
 
     @EventHandler
@@ -39,6 +40,7 @@ public class pracManager implements Listener {
     }
 
     public void enterPrac(Player player){
+		progressmanager.saveLastPos(player);
         pracLocation.put(player,player.getLocation());
         chatMessenger.sendPracEnter(player);
     }
@@ -60,4 +62,8 @@ public class pracManager implements Listener {
     public  boolean isInPrac(Player player) {
         return pracLocation.containsKey(player);
     }
+
+	public void getProgressManager(progressManager pm) {
+		progressmanager = pm;
+	}
 }

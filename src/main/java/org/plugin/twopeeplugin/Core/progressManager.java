@@ -16,10 +16,12 @@ public class progressManager {
     private parkourTimer parkourtimer;
     private YamlConfiguration config;
     private itemManager itemmanager;
-    public progressManager(parkourTimer timer, itemManager im) {
+    private pracManager pracmanager;
+    public progressManager(parkourTimer timer, itemManager im,pracManager pm) {
         config = courseYamlConfig.getConfig();
         parkourtimer = timer;
         itemmanager = im;
+		pracmanager = pm;
     }
 
 
@@ -39,12 +41,14 @@ public class progressManager {
     }
 
     public void leaveCourse(Player player) {
+		if (pracmanager.isInPrac(player)) return;
+
         parkourtimer.stopTime(player.getUniqueId(),player.getWorld().getName());
         saveLastPos(player);
         itemmanager.saveInventory(player);
     }
 
-    private void saveLastPos(Player player) {
+    public void saveLastPos(Player player) {
         Location pos = player.getLocation();
         String worldName = player.getWorld().getName();
         config.set("course." + worldName + ".progress." + player.getUniqueId() + ".last pos.x",pos.getX());

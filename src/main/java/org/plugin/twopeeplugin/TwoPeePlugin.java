@@ -4,7 +4,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.plugin.twopeeplugin.Commands.*;
 import org.plugin.twopeeplugin.Commands.builderCommnads.*;
 import org.plugin.twopeeplugin.Core.*;
-import org.plugin.twopeeplugin.Utils.courseYamlConfig;
 import org.plugin.twopeeplugin.Utils.placeHolderAPIExpansion;
 
 public final class TwoPeePlugin extends JavaPlugin {
@@ -23,7 +22,8 @@ public final class TwoPeePlugin extends JavaPlugin {
         tpLocationManager tpmanager = new tpLocationManager();
         whiteListWorldManager whitelister = new whiteListWorldManager();
         groupManager groupManager = new groupManager();
-        progressManager progressmanager = new progressManager(timer,itemmanager);
+        progressManager progressmanager = new progressManager(timer,itemmanager,pracmanager);
+		pracmanager.getProgressManager(progressmanager);
         getServer().getPluginManager().registerEvents(guiListener,this);
         getServer().getPluginManager().registerEvents(new checkpointListener(progressmanager,pracmanager), this);
         getServer().getPluginManager().registerEvents(tpmanager,this);
