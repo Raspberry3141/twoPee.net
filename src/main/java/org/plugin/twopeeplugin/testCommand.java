@@ -12,15 +12,16 @@ import org.plugin.twopeeplugin.Core.progressManager;
 import static org.bukkit.Bukkit.getWorld;
 
 public class testCommand implements CommandExecutor {
-
     private courseBuilder coursebuilder;
     private guiEventListener guilistener;
     private progressManager progressmanager;
+
     public testCommand(courseBuilder cb, guiEventListener gui,progressManager pr) {
         coursebuilder = cb;
         guilistener = gui;
         progressmanager = pr;
     }
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (Integer.parseInt(strings[0]) == 0) {
