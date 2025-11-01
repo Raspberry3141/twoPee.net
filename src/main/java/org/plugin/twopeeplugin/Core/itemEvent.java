@@ -20,7 +20,7 @@ public class itemEvent implements Listener {
     public void onPlayerRightClickOnItem(PlayerInteractEvent event) {
         if (event.getPlayer()==null) return;
         if (event.getItem()==null) return;
-        if (event.getAction()== Action.RIGHT_CLICK_AIR || event.getAction()==Action.RIGHT_CLICK_AIR) {
+        if (event.getAction()== Action.RIGHT_CLICK_BLOCK || event.getAction()==Action.RIGHT_CLICK_AIR) {
             ItemStack item = event.getItem();
             Player player = event.getPlayer();
             if (item.getType()== Material.CARROT_STICK) {

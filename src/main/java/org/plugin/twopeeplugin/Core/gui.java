@@ -12,6 +12,7 @@ import org.plugin.twopeeplugin.Utils.courseYamlConfig;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
@@ -85,9 +86,19 @@ public class gui {
 		lore.add("Author: " + config.getString("course." + course + ".author"));
 		lore.add("Date: " + config.getString("course." + course + ".date"));
 		lore.add("Status: " + completionInfo(course));
+		// lore.add("Attempts: " + attempts(course));
 		meta.setDisplayName(config.getString("course." + course + ".display name"));
 		meta.setLore(lore);
 		item.setItemMeta(meta);
+	}
+
+	private String attempts(String course) {
+		List<Map<?,?>>  completion = courseYamlConfig.getConfig().getMapList("course." + course + ".progress");
+		if (completion!=null) {
+			return Integer.toString(completion.size());
+		} else {
+			return Integer.toString(0);
+		}
 	}
 
 	private String completionInfo(String course) {

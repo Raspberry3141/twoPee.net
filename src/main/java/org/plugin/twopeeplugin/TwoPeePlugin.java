@@ -23,9 +23,10 @@ public final class TwoPeePlugin extends JavaPlugin {
         whiteListWorldManager whitelister = new whiteListWorldManager();
         groupManager groupManager = new groupManager();
         progressManager progressmanager = new progressManager(timer,itemmanager,pracmanager);
+		checkpointListener checkpointlistener = new checkpointListener(progressmanager, pracmanager);
 		pracmanager.getProgressManager(progressmanager);
         getServer().getPluginManager().registerEvents(guiListener,this);
-        getServer().getPluginManager().registerEvents(new checkpointListener(progressmanager,pracmanager), this);
+        getServer().getPluginManager().registerEvents(checkpointlistener, this);
         getServer().getPluginManager().registerEvents(tpmanager,this);
         getServer().getPluginManager().registerEvents(new znpcListener(guiListener,groupManager),this);
         getServer().getPluginManager().registerEvents(new globalSettingEvents(progressmanager,groupManager),this);
@@ -41,7 +42,7 @@ public final class TwoPeePlugin extends JavaPlugin {
         this.getCommand("mapbuilder").setExecutor(new mapbuilder(coursebuilder));
         this.getCommand("setnewspawn").setExecutor(new setSpawn());
         this.getCommand("setdisplay").setExecutor(new setDisplayWorldName());
-        this.getCommand("verify").setExecutor(new verifyCourse(coursebuilder,groupManager));
+        this.getCommand("verify").setExecutor(new verifyCourse(coursebuilder,groupManager,progressmanager,checkpointlistener));
         this.getCommand("cancelverify").setExecutor(new cancelVerifyCourse(coursebuilder,groupManager));
         this.getCommand("gms").setExecutor(new gamemodeAdventure());
         this.getCommand("gmc").setExecutor(new gamemodeCreative());
@@ -54,6 +55,7 @@ public final class TwoPeePlugin extends JavaPlugin {
         this.getCommand("itemblock").setExecutor(new itemBlock(giveitemmanager));
         this.getCommand("prac").setExecutor(new prac(pracmanager));
         this.getCommand("unprac").setExecutor(new unprac(pracmanager));
+        this.getCommand("gap").setExecutor(new goldenApple());
         new placeHolderAPIExpansion(progressmanager).register();
 
     }

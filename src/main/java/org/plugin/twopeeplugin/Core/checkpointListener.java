@@ -116,8 +116,10 @@ public class checkpointListener implements Listener {
         }
     }
 
+
     private void startParkour(String worldName, UUID uuid, Player player) {
-        failParkour(worldName,uuid);
+        resetParkour(worldName,uuid);
+		progressmanager.clearInv(player);
         progressmanager.startCourse(player);
         chatMessenger.sendParkourStart(player);
     }
@@ -130,12 +132,13 @@ public class checkpointListener implements Listener {
         playerYamlConfig.getInstance().save();
         config.set("course." + worldName + ".progress." + uuid + ".completion", ++completion);
         chatMessenger.sendParkourEnd(player, progressmanager.getFormattedTime(player));
-        failParkour(worldName,uuid);
+        resetParkour(worldName,uuid);
+		progressmanager.clearInv(player);
         progressmanager.leaveCourse(player);
         verify(player,worldName);
     }
 
-    private void failParkour(String worldName, UUID uuid) {
+    public void resetParkour(String worldName, UUID uuid) {
         config.set("course." + worldName + ".progress." + uuid + ".last cp", -1);
         config.set("course." + worldName + ".progress." + uuid + ".tick", 0);
         config.set("course." + worldName + ".progress." + uuid + ".last pos.x", null);

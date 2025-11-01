@@ -6,6 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.plugin.twopeeplugin.Utils.chatMessenger;
 
 public class sword implements CommandExecutor {
@@ -14,6 +15,9 @@ public class sword implements CommandExecutor {
         if (commandSender instanceof Player) {
             Player player = (Player) commandSender;
             ItemStack sword = new ItemStack(Material.IRON_SWORD);
+			ItemMeta meta = sword.getItemMeta();
+			meta.setDisplayName("Sword");
+			sword.setItemMeta(meta);
             player.getInventory().addItem(sword);
             chatMessenger.sendGiveItem(player,sword.getItemMeta().getDisplayName());
         }

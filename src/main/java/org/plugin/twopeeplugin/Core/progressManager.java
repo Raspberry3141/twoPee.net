@@ -59,6 +59,16 @@ public class progressManager {
         courseYamlConfig.getInstance().save();
     }
 
+    public void clearLastPos(Player player) {
+        String worldName = player.getWorld().getName();
+        config.set("course." + worldName + ".progress." + player.getUniqueId() + ".last pos.x",null);
+        config.set("course." + worldName + ".progress." + player.getUniqueId() + ".last pos.y",null);
+        config.set("course." + worldName + ".progress." + player.getUniqueId() + ".last pos.z",null);
+        config.set("course." + worldName + ".progress." + player.getUniqueId() + ".last pos.yaw",null);
+        config.set("course." + worldName + ".progress." + player.getUniqueId() + ".last pos.pitch",null);
+        courseYamlConfig.getInstance().save();
+    }
+
     private void tpToLastPos(Player player) {
         Location pos = player.getLocation();
         String worldName = player.getWorld().getName();
@@ -75,20 +85,34 @@ public class progressManager {
         teleport(player,pos);
     }
 
+	public void clearInv(Player player) {
+		itemmanager.resetInventory(player);
+	}
+
     public void tpToLastCp(Player player) {
         String worldname = player.getWorld().getName();
         if (getWorld(worldname)!=null) {
-            int index = getCheckpoints(worldname).size()-1;
+            int index = getLastCp(player);
             tpToCpAt(player,worldname,index);
         }
     }
 
+	private int getLastCp(Player player) {
+		return courseYamlConfig.getConfig().getInt("course." + player.getWorld().getName() +".progress." + player.getUniqueId() +".last cp");
+	}
+
     private void tpToCpAt(Player player, String worldName, Integer index) {
         if (getWorld(worldName)!=null) {
+			if (index<0) {
+				teleport(player,player.getWorld().getSpawnLocation());
+				return;
+			}
             double x = (Integer) getCheckpoints(worldName).get(index).get("x") + 0.5D;
             double y = (Integer) getCheckpoints(worldName).get(index).get("y");
             double z = (Integer) getCheckpoints(worldName).get(index).get("z") + 0.5D;
             Location location = new Location(getWorld(worldName),x,y,z);
+			System.out.println(index);
+			System.out.println(x +" "+" "+ y +" "+ z);
             teleport(player,location);
         }
     }
