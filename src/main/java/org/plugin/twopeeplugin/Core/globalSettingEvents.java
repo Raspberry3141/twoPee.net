@@ -73,7 +73,6 @@ public class globalSettingEvents implements Listener {
 
     private void onEnter(PlayerChangedWorldEvent event) {
         if (isACoures(event.getPlayer().getWorld().getName())) {
-            //TODO: LAST POS NOT WORKING
             progressmanager.enterCourse(event.getPlayer());
             if (isBuildingMode(event.getPlayer().getWorld().getName())) {
                 groupmanager.enterBuildingMode(event.getPlayer());

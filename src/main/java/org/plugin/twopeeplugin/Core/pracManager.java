@@ -15,7 +15,6 @@ public class pracManager implements Listener {
     private HashMap<Player, Location> pracLocation;
 	private progressManager progressmanager;
 
-
     @EventHandler
     public void onPlayerHitInPrac(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof Player) {
@@ -42,6 +41,7 @@ public class pracManager implements Listener {
     public void enterPrac(Player player){
 		progressmanager.saveLastPos(player);
         pracLocation.put(player,player.getLocation());
+        //save loc and do lazy initalizat
         chatMessenger.sendPracEnter(player);
     }
 
