@@ -23,6 +23,11 @@ public class verifyCourse implements CommandExecutor {
             coursebuilder.setVerifiable((Player) commandSender,true);
             chatMessenger.sendVerifiable((Player) commandSender);
             groupmanager.leaveBuildingMode((Player) commandSender);
+            //clear inv
+            //reset last pos
+            //tpt to spawn
+            //gamemode a
+            //
         }
         return false;
     }

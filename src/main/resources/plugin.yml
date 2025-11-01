@@ -51,7 +51,7 @@ commands:
     permission-message: You don't have permission to use this command!
   prac:
     usage: /prac
-    aliases: [prac]
+    aliases: [/prac]
     permission:
       permission-message: You don't have permission to use this command!
   unprac:
@@ -63,7 +63,7 @@ commands:
   mapbuilder:
     usage: /mapbuilder
     aliases: [ mapbuilder ]
-    permission: twopee.build
+    permission:
     permission-message: You don't have permission to use this command!
   setnewspawn:
     usage: /setspawn
@@ -83,7 +83,7 @@ commands:
   cancelverify:
     usage: /cancelverify <player>
     aliases: [ cancelverify ]
-    permission: twopee.build
+    permission:
     permission-message: You don't have permission to use this command!
   gms:
     usage: /gms

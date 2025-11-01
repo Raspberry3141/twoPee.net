@@ -37,7 +37,6 @@ public class groupManager {
     }
 
     private void addGroup(Set<String> groups,Player player) {
-        //REFACTOR: use enum
         int completions = playerYamlConfig.getConfig().getInt(player.getName() + ".completion");
         if (completions>99 && !groups.contains("toaster")) {
             addGroup(player,"toaster");

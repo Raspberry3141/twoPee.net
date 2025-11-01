@@ -33,6 +33,13 @@ public class globalSettingEvents implements Listener {
     }
 
     @EventHandler
+    public void onPlayerDrop(PlayerDropItemEvent event) {
+        if (!event.getPlayer().isOp()) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
     public void onPlayerReelIn(PlayerFishEvent event) {
         if (event.getState()== PlayerFishEvent.State.CAUGHT_ENTITY) {
             Entity caught = event.getCaught();

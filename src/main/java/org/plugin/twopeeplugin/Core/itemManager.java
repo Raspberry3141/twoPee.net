@@ -2,6 +2,7 @@ package org.plugin.twopeeplugin.Core;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -36,7 +37,9 @@ public class itemManager {
 
     public void loadInventory(Player player) {
         player.getInventory().clear();
-        for (String key : inventoryYamlConfig.getConfig().getConfigurationSection(player.getWorld().getName()+"."+player.getUniqueId()+".inventory").getKeys(false)) {
+        ConfigurationSection section = inventoryYamlConfig.getConfig().getConfigurationSection(player.getWorld().getName()+"."+player.getUniqueId()+".inventory");
+        if (section==null) return;
+        for (String key : section.getKeys(false)) {
             ItemStack item = inventoryYamlConfig.getConfig().getItemStack(player.getWorld().getName()+"."+player.getUniqueId()+".inventory." + key);
             if (item != null) {
                 int amount = inventoryYamlConfig.getConfig().getInt(player.getWorld().getName()+"."+player.getUniqueId()+".inventory." + key);

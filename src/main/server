@@ -152,6 +152,7 @@ global:
 - set time
 - disable water lava flowing
 - disable gravity blocks from falling
+- dosable player drop
 -----------------------------------------
 prac mode:
     - disable hitting player
@@ -163,16 +164,14 @@ prac mode:
 item manager:
 - give item
 - clear item on leave
-
+main course maps:
+[course]:
+    .[id]
+    .[difficulty]
+    .[completed]
 
 TEST:
 - whitelits
 - verifcation system
 - mapmaker
 - nametag
-
-main course maps:
-[course]:
-    .[id]
-    .[difficulty]
-    .[completed]

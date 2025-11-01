@@ -84,16 +84,15 @@ public class gui {
 		lore.add(course);
 		lore.add("Author: " + config.getString("course." + course + ".author"));
 		lore.add("Date: " + config.getString("course." + course + ".date"));
-		lore.add("Status: " + completionInfo());
+		lore.add("Status: " + completionInfo(course));
 		meta.setDisplayName(config.getString("course." + course + ".display name"));
 		meta.setLore(lore);
 		item.setItemMeta(meta);
 	}
 
-	private String completionInfo() {
-		String course = player.getWorld().getName();
+	private String completionInfo(String course) {
 		UUID uuid = player.getUniqueId();
-		int completion = courseYamlConfig.getConfig().getInt(course + "." + uuid + ".completion");
+		int completion = courseYamlConfig.getConfig().getInt("course." + course + ".progress." + uuid + ".completion");
 		if (completion == 0) {
 			return "New";
 		} else

@@ -41,7 +41,6 @@ public class pracManager implements Listener {
     public void enterPrac(Player player){
 		progressmanager.saveLastPos(player);
         pracLocation.put(player,player.getLocation());
-        //save loc and do lazy initalizat
         chatMessenger.sendPracEnter(player);
     }
 
