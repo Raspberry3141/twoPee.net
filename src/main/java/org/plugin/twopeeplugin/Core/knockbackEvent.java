@@ -39,7 +39,7 @@ public class knockbackEvent implements Listener {
                 cancelKb(event,attacker,victim);
                 dealKnockback(victim,rightTransformKb(calcualteKnockback(victim,attacker)));
                 break;
-            case WOOD_HOE:
+            case PRISMARINE_SHARD:
                 cancelKb(event,attacker,victim);
                 dealKnockback(victim,invertKb(calcualteKnockback(victim,attacker)));
                 break;

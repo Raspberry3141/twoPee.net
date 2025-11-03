@@ -119,13 +119,13 @@ public class giveItemManager implements Listener {
             meta.spigot().setUnbreakable(true);
             item.setItemMeta(meta);
             return item;
-        } else if (Objects.equals(it,items.inverse)) {
-            ItemStack item = new ItemStack(Material.WOOD_HOE);
+        } else if (Objects.equals(it, items.inverse)) {
+            ItemStack item = new ItemStack(Material.PRISMARINE_SHARD);
             ItemMeta meta = item.getItemMeta();
-            meta.spigot().setUnbreakable(true);
             meta.setDisplayName(ChatColor.GOLD + "Inverse Knockback" + kb);
-            item.addUnsafeEnchantment(Enchantment.KNOCKBACK,kb);
             item.setItemMeta(meta);
+            item.addUnsafeEnchantment(Enchantment.KNOCKBACK,kb);
+			return item;
         }
         return null;
     }
