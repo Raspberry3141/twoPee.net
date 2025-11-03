@@ -1,6 +1,7 @@
 package org.plugin.twopeeplugin.Core;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -87,7 +88,7 @@ public class gui {
 		lore.add("Date: " + config.getString("course." + course + ".date"));
 		lore.add("Status: " + completionInfo(course));
 		// lore.add("Attempts: " + attempts(course));
-		meta.setDisplayName(config.getString("course." + course + ".display name"));
+		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',config.getString("course." + course + ".display name")));
 		meta.setLore(lore);
 		item.setItemMeta(meta);
 	}
