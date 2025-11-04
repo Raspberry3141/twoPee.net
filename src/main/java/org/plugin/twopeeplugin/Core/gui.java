@@ -73,11 +73,17 @@ public class gui {
 		Set<String> courseNamesSet = configSection.getKeys(false);
 		List<String> courseNames = new ArrayList<>(courseNamesSet);
 		for (String course : courseNames) {
-			ItemStack item = new ItemStack(Material.IRON_DOOR);
-			addInfo(item, course);
-			courseItems.add(item);
+			if (isVerified(course)) {
+				ItemStack item = new ItemStack(Material.IRON_DOOR);
+				addInfo(item, course);
+				courseItems.add(item);
+			}
 		}
 		return courseItems;
+	}
+
+	private boolean isVerified(String course) {
+		return config.getBoolean("course." + course + ".verfied");
 	}
 
 	private void addInfo(ItemStack item, String course) {
@@ -88,7 +94,7 @@ public class gui {
 		lore.add("Date: " + config.getString("course." + course + ".date"));
 		lore.add("Status: " + completionInfo(course));
 		// lore.add("Attempts: " + attempts(course));
-		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',config.getString("course." + course + ".display name")));
+		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',"&c" + config.getString("course." + course + ".display name")));
 		meta.setLore(lore);
 		item.setItemMeta(meta);
 	}
