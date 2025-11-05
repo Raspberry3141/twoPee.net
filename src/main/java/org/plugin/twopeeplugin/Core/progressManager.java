@@ -111,8 +111,6 @@ public class progressManager {
             double y = (Integer) getCheckpoints(worldName).get(index).get("y");
             double z = (Integer) getCheckpoints(worldName).get(index).get("z") + 0.5D;
             Location location = new Location(getWorld(worldName),x,y,z);
-			System.out.println(index);
-			System.out.println(x +" "+" "+ y +" "+ z);
             teleport(player,location);
         }
     }

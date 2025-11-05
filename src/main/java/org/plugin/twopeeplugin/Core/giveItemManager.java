@@ -90,21 +90,27 @@ public class giveItemManager implements Listener {
             ItemMeta meta = item.getItemMeta();
             meta.setDisplayName(ChatColor.GOLD + "Knockback " + kb);
             item.setItemMeta(meta);
-            item.addUnsafeEnchantment(Enchantment.KNOCKBACK,kb);
+			if (kb>0) {
+				item.addUnsafeEnchantment(Enchantment.KNOCKBACK,kb);
+			}
             return item;
         } else if (Objects.equals(it, items.left)) {
             ItemStack item = new ItemStack(Material.BLAZE_ROD);
             ItemMeta meta = item.getItemMeta();
             meta.setDisplayName(ChatColor.GOLD + "Lefty Knockback " + kb);
             item.setItemMeta(meta);
-            item.addUnsafeEnchantment(Enchantment.KNOCKBACK,kb);
+			if (kb>0) {
+				item.addUnsafeEnchantment(Enchantment.KNOCKBACK,kb);
+			}
             return item;
         } else if (Objects.equals(it, items.right)) {
             ItemStack item = new ItemStack(Material.BONE);
             ItemMeta meta = item.getItemMeta();
             meta.setDisplayName(ChatColor.GOLD + "Righty Knockback " + kb);
             item.setItemMeta(meta);
-            item.addUnsafeEnchantment(Enchantment.KNOCKBACK,kb);
+			if (kb>0) {
+				item.addUnsafeEnchantment(Enchantment.KNOCKBACK,kb);
+			}
             return item;
         } else if (Objects.equals(it, items.pcp)) {
             ItemStack item = new ItemStack(Material.CARROT_STICK);
@@ -124,7 +130,9 @@ public class giveItemManager implements Listener {
             ItemMeta meta = item.getItemMeta();
             meta.setDisplayName(ChatColor.GOLD + "Inverse Knockback" + kb);
             item.setItemMeta(meta);
-            item.addUnsafeEnchantment(Enchantment.KNOCKBACK,kb);
+			if (kb>0) {
+				item.addUnsafeEnchantment(Enchantment.KNOCKBACK,kb);
+			}
 			return item;
         }
         return null;
