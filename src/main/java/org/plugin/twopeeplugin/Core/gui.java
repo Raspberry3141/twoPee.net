@@ -79,10 +79,6 @@ public class gui {
 				courseItems.add(item);
 			}
 		}
-		System.out.println("PRINITNG");
-		for (ItemStack c: courseItems) {
-			System.out.println(c.getItemMeta().getDisplayName());
-		}
 		return courseItems;
 	}
 
