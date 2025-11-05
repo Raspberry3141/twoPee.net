@@ -10,6 +10,30 @@ import org.bukkit.entity.Player;
 
 public class chatMessenger {
 
+	public static void sendCommandList(Player player) {
+		player.sendMessage(ChatColor.YELLOW + "/browse : Open map browser");
+		player.sendMessage(ChatColor.YELLOW + "/lobby, /l : teleport to lobby");
+		player.sendMessage(ChatColor.YELLOW + "/pcp <#>, /p  <#>: teleport to previous checkpoint or specified checkpoint");
+		player.sendMessage(ChatColor.YELLOW + "/gap /sword /pcpitem : gives specified item");
+		player.sendMessage(ChatColor.YELLOW + "/join [map id|username]/j : Teleport to the specified map or the map the user specified is in");
+		player.sendMessage(ChatColor.YELLOW + "/invite [username] /i : Invite a player to your map");
+		player.sendMessage(ChatColor.YELLOW + "/prac /unprac /u : enter/leave prac mode");
+		player.sendMessage(ChatColor.YELLOW + "/mapbuilder : craete/teleport to your world");
+		player.sendMessage("=============Builder Mode Command=============");
+		player.sendMessage(ChatColor.YELLOW + "/platform : spawns a platform at 0 64 0");
+		player.sendMessage(ChatColor.YELLOW + "/setnewspawn : sets the world spawnpoint");
+		player.sendMessage(ChatColor.YELLOW + "/setdisplay : sets the display name");
+		player.sendMessage(ChatColor.YELLOW + "/verify : verify your map to publish");
+		player.sendMessage(ChatColor.YELLOW + "/cancelverify : cancel verification");
+		player.sendMessage(ChatColor.YELLOW + "/gms : enter adventure mode");
+		player.sendMessage(ChatColor.YELLOW + "/gmc : enter creative mode");
+		player.sendMessage(ChatColor.YELLOW + "/fly : toggle fly");
+		player.sendMessage(ChatColor.YELLOW + "/whitelist : configure whitelist for your map");
+		player.sendMessage(ChatColor.YELLOW + "/itemblock : create an item block at the block looking at");
+		player.sendMessage(ChatColor.YELLOW + "/tpblock : create a tp block at the block looking at");
+
+	}
+
 	public static void sendPracFail(Player player) {
 		player.sendMessage(ChatColor.YELLOW + "Failed Entering Practice Mode..");
 	}

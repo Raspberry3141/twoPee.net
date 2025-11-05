@@ -13,6 +13,11 @@ commands:
     usage: /test
     aliases: [ test ]
     permission: twopee.op
+  help:
+    usage: /help
+    aliases: [help]
+    permission: 
+    permission-message: You don't have permission to use this command!
   browse:
     usage: /browse
     aliases: [b,browser]
@@ -28,7 +33,6 @@ commands:
     aliases: [p, pcp]
     permission:
     permission-message: You don't have permission to use this command!
-
   gap:
     usage: /gap
     aliases: [ gap ]
@@ -71,7 +75,7 @@ commands:
     permission:
     permission-message: You don't have permission to use this command!
   setnewspawn:
-    usage: /setspawn
+    usage: /setnewspawn
     aliases: [ setnewspawn ]
     permission: twopee.build
     permission-message: You don't have permission to use this command!

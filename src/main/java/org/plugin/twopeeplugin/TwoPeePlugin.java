@@ -36,6 +36,7 @@ public final class TwoPeePlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new itemEvent(pracmanager,progressmanager),this);
         this.getCommand("test").setExecutor(new testCommand(coursebuilder,guiListener,progressmanager));
         this.getCommand("browse").setExecutor(new browseCourse(guiListener));
+        this.getCommand("help").setExecutor(new help());
         this.getCommand("lobby").setExecutor(new lobby());
         this.getCommand("pcp").setExecutor(new previousCheckpoint());
         this.getCommand("sword").setExecutor(new sword());
