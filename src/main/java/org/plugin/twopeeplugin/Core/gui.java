@@ -79,11 +79,15 @@ public class gui {
 				courseItems.add(item);
 			}
 		}
+		System.out.println("PRINITNG");
+		for (ItemStack c: courseItems) {
+			System.out.println(c.getItemMeta().getDisplayName());
+		}
 		return courseItems;
 	}
 
 	private boolean isVerified(String course) {
-		return config.getBoolean("course." + course + ".verfied");
+		return config.getBoolean("course." + course + ".verified");
 	}
 
 	private void addInfo(ItemStack item, String course) {
