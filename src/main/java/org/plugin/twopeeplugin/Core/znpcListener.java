@@ -8,10 +8,13 @@ import org.plugin.twopeeplugin.Utils.chatMessenger;
 public class znpcListener implements Listener {
     guiEventListener guilistner;
     groupManager groupmanager;
+	progressManager progressmanager;
+	mostPopularTracker mostpopulartracker;
 
-    public znpcListener(guiEventListener ge, groupManager gm) {
+    public znpcListener(guiEventListener ge, groupManager gm,mostPopularTracker mpt) {
         guilistner = ge;
         groupmanager = gm;
+		mostpopulartracker = mpt;
     }
     @EventHandler
     public void onNPCClick(NpcInteractEvent event) {
@@ -23,6 +26,11 @@ public class znpcListener implements Listener {
             chatMessenger.sendDiscordLink(event.getPlayer());
         } else if (event.getEntry().getId().equals("3")) {
             groupmanager.promote(event.getPlayer());
-        }
+        } else if (event.getEntry().getId().equals("4")) {
+			String worldName = mostpopulartracker.getMostPopularMap();
+			if (worldName!=null) {
+				progressmanager.teleport(event.getPlayer(), worldName);
+			} 
+		}
     }
  }

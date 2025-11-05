@@ -24,11 +24,12 @@ public final class TwoPeePlugin extends JavaPlugin {
         groupManager groupManager = new groupManager();
         progressManager progressmanager = new progressManager(timer,itemmanager,pracmanager);
 		checkpointListener checkpointlistener = new checkpointListener(progressmanager, pracmanager, whitelister);
+		mostPopularTracker mostPopularTracker = new mostPopularTracker();
 		pracmanager.getProgressManager(progressmanager);
         getServer().getPluginManager().registerEvents(guiListener,this);
         getServer().getPluginManager().registerEvents(checkpointlistener, this);
         getServer().getPluginManager().registerEvents(tpmanager,this);
-        getServer().getPluginManager().registerEvents(new znpcListener(guiListener,groupManager),this);
+        getServer().getPluginManager().registerEvents(new znpcListener(guiListener,groupManager, mostPopularTracker),this);
         getServer().getPluginManager().registerEvents(new globalSettingEvents(progressmanager,groupManager),this);
         getServer().getPluginManager().registerEvents(new knockbackEvent(pracmanager),this);
         getServer().getPluginManager().registerEvents(giveitemmanager,this);
