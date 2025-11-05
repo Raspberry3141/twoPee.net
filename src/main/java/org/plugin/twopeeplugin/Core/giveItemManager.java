@@ -84,6 +84,10 @@ public class giveItemManager implements Listener {
         }
     }
 
+	public ItemStack getPcpItem() {
+		return createItem(items.pcp, 1);
+	}
+
     private ItemStack createItem(items it, int kb) {
         if (Objects.equals(it, items.stick)) {
             ItemStack item = new ItemStack(Material.STICK);

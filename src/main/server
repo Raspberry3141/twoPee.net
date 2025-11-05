@@ -103,6 +103,7 @@ comamnds:
     - pcpitem
     - gap
     - sword
+	- pcp item
 -build mode:
     - mpabuilder (look for unverified map)
     - set spawn
