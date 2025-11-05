@@ -39,9 +39,12 @@ public class pracManager implements Listener {
     }
 
     public void enterPrac(Player player){
-		progressmanager.saveLastPos(player);
-        pracLocation.put(player,player.getLocation());
-        chatMessenger.sendPracEnter(player);
+		if (player.isOnGround()) {
+			progressmanager.saveLastPos(player);
+			pracLocation.put(player,player.getLocation());
+			chatMessenger.sendPracEnter(player);
+		}
+		chatMessenger.sendPracFail(player);
     }
 
     public void leavePrac(Player player) {

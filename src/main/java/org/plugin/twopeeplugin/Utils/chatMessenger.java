@@ -10,6 +10,9 @@ import org.bukkit.entity.Player;
 
 public class chatMessenger {
 
+	public static void sendPracFail(Player player) {
+		player.sendMessage(ChatColor.YELLOW + "Failed Entering Practice Mode..");
+	}
 	public static void sendPracEnter(Player player) {
 		player.sendMessage(ChatColor.YELLOW + "Entering Practice Mode..");
 	}
