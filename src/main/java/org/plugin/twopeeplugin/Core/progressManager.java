@@ -101,7 +101,7 @@ public class progressManager {
 		return courseYamlConfig.getConfig().getInt("course." + player.getWorld().getName() +".progress." + player.getUniqueId() +".last cp");
 	}
 
-    private void tpToCpAt(Player player, String worldName, Integer index) {
+    private void tpToCpAt(Player player, String worldName, int index) {
         if (getWorld(worldName)!=null) {
 			if (index<0) {
 				teleport(player,player.getWorld().getSpawnLocation());
@@ -111,7 +111,7 @@ public class progressManager {
             double y = (Integer) getCheckpoints(worldName).get(index).get("y");
             double z = (Integer) getCheckpoints(worldName).get(index).get("z") + 0.5D;
             Location location = new Location(getWorld(worldName),x,y,z);
-            teleport(player,location);
+            teleportWithCpMsg(player, location, index);
         }
     }
 
@@ -130,6 +130,19 @@ public class progressManager {
     public int getPreviousCheckpoint(Player player) {
         return config.getInt("course."+player.getWorld().getName()+".progress."+player.getUniqueId()+".last cp");
 
+    }
+
+    public static void teleportWithCpMsg(Player player, Location location, int cp) {
+        World world = location.getWorld();
+        if (world == null) {
+            new WorldCreator(location.getWorld().getName()).createWorld();
+        }
+        if (isAccessible(player,location.getWorld())) {
+            player.teleport(location);
+            chatMessenger.sendPreviousCheckpointMessage(player, cp);
+        } else {
+            chatMessenger.sendWhiteListed(player,location.getWorld().getName());
+        }
     }
 
     public static void teleport(Player player, Location location) {
