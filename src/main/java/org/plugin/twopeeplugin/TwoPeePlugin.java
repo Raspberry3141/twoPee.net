@@ -23,7 +23,7 @@ public final class TwoPeePlugin extends JavaPlugin {
         whiteListWorldManager whitelister = new whiteListWorldManager();
         groupManager groupManager = new groupManager();
         progressManager progressmanager = new progressManager(timer,itemmanager,pracmanager);
-		checkpointListener checkpointlistener = new checkpointListener(progressmanager, pracmanager);
+		checkpointListener checkpointlistener = new checkpointListener(progressmanager, pracmanager, whitelister);
 		pracmanager.getProgressManager(progressmanager);
         getServer().getPluginManager().registerEvents(guiListener,this);
         getServer().getPluginManager().registerEvents(checkpointlistener, this);

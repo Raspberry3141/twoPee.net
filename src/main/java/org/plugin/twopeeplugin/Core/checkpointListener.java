@@ -23,9 +23,11 @@ public class checkpointListener implements Listener {
     YamlConfiguration config = courseYamlConfig.getConfig();
     pracManager pracmanager;
     progressManager progressmanager;
-    public checkpointListener(progressManager pr,pracManager prm) {
+	whiteListWorldManager whitelistmanager;
+    public checkpointListener(progressManager pr,pracManager prm, whiteListWorldManager wlm) {
         progressmanager = pr;
         pracmanager = prm;
+		whitelistmanager = wlm;
     }
 
     @EventHandler
@@ -111,6 +113,7 @@ public class checkpointListener implements Listener {
             courseYamlConfig.getConfig().set("course." + worldName +".verified",true);
             courseYamlConfig.getConfig().set("course." + worldName +".verifiable",false);
             courseYamlConfig.getInstance().save();
+			whitelistmanager.clearList(player);
             String mapdisplay = courseYamlConfig.getConfig().getString("course." + worldName +".display name");
             if (mapdisplay!=null) chatMessenger.sendMapVerified(player,mapdisplay);
         }
