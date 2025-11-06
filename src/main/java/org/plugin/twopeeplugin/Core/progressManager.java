@@ -163,7 +163,6 @@ public class progressManager {
     }
 
     public static void teleport(Player player, String worldName) {
-		//TODO: WORLDNAME LOOKS CORRECT BUT FAILS TO CREATEWORLD
         if (getWorld(worldName) == null) {
             new WorldCreator(worldName).createWorld();
         }

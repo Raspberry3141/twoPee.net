@@ -27,10 +27,10 @@ public class znpcListener implements Listener {
         } else if (event.getEntry().getId().equals("3")) {
             groupmanager.promote(event.getPlayer());
         } else if (event.getEntry().getId().equals("4")) {
-			String worldName = mostpopulartracker.getMostPopularMap();
-			if (worldName!=null) {
-				progressmanager.teleport(event.getPlayer(), worldName);
-			} 
+			// String worldName = mostpopulartracker.getMostPopularMap();
+			// if (worldName!=null) {
+			// 	progressmanager.teleport(event.getPlayer(), worldName);
+			// } 
 		}
     }
  }
