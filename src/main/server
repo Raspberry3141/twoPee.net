@@ -172,6 +172,9 @@ main course maps:
     .[difficulty]
     .[completed]
 
+back up from local machine
+fetch the entire server from local machine
+
 TEST:
 - whitelits
 - verifcation system
