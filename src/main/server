@@ -1,8 +1,3 @@
-objective:
-a server for 2p parkour where players can easily share and access maps.(current hypixel style does not reward the builder because the players are not rewarded)
-
-project scope:
-pkc/hypixel 2p people
 
 requirement:
 - parkour system
@@ -174,6 +169,8 @@ main course maps:
 
 back up from local machine
 fetch the entire server from local machine
+
+
 
 TEST:
 - whitelits
