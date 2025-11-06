@@ -103,6 +103,10 @@ public class progressManager {
 
     private void tpToCpAt(Player player, String worldName, int index) {
         if (getWorld(worldName)!=null) {
+			if (worldName.equals("lobby")) {
+				teleport(player,player.getWorld().getSpawnLocation());
+				return;
+			}
 			if (index<0) {
 				teleport(player,player.getWorld().getSpawnLocation());
 				return;
