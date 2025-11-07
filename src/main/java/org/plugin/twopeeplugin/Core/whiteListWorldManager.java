@@ -16,7 +16,7 @@ public class whiteListWorldManager {
 
     public void disableWhiteList(Player player) {
         String worldName = player.getWorld().getName();
-        courseYamlConfig.getConfig().set("course."+worldName+".whitelist",true);
+        courseYamlConfig.getConfig().set("course."+worldName+".whitelist",false);
         courseYamlConfig.getInstance().save();
         chatMessenger.sendWhiteListAction(player,"List Disabled");
     }
@@ -48,8 +48,7 @@ public class whiteListWorldManager {
 
     public void clearList(Player player) {
         String worldName = player.getWorld().getName();
-        Set<String> set = Collections.emptySet();
-        courseYamlConfig.getConfig().set("course."+worldName+".list",set);
+        courseYamlConfig.getConfig().set("course."+worldName+".whitelist",false);
         courseYamlConfig.getInstance().save();
         chatMessenger.sendWhiteListAction(player,"List Cleared");
     }

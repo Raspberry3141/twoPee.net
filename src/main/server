@@ -171,6 +171,8 @@ back up from local machine
 fetch the entire server from local machine
 
 
+--builder rank promote/demote command
+
 
 TEST:
 - whitelits
