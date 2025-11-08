@@ -9,6 +9,10 @@ permissions:
     default: op
 
 commands:
+  delete:
+    usage: /delte
+    aliases: [ delte ]
+    permission: twopee.op
   test:
     usage: /test
     aliases: [ test ]

@@ -9,9 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.player.PlayerAnimationEvent;
 import org.bukkit.util.Vector;
-import org.bukkit.Location;
 import org.plugin.twopeeplugin.TwoPeePlugin;
 
 public class knockbackEvent implements Listener {
@@ -42,29 +40,17 @@ public class knockbackEvent implements Listener {
 		Entity victim = event.getEntity();
 		switch (attacker.getItemInHand().getType()) {
 			case BLAZE_ROD:
-				cancelKb(event, attacker, victim);
 				dealKnockback(victim, leftTransformKb(calcualteKnockback(victim, attacker)));
 				break;
 			case BONE:
-				cancelKb(event, attacker, victim);
 				dealKnockback(victim, rightTransformKb(calcualteKnockback(victim, attacker)));
 				break;
 			case PRISMARINE_SHARD:
-				cancelKb(event, attacker, victim);
 				dealKnockback(victim, invertKb(calcualteKnockback(victim, attacker)));
 				break;
 		}
 	}
 
-	private void cancelKb(EntityDamageEvent event, Player attacker, Entity victim) {
-		double damageAmount = event.getDamage();
-		event.setCancelled(true);
-		if (victim instanceof Player)
-			((Player) victim).damage(damageAmount, attacker);
-		else {
-			((LivingEntity) victim).damage(damageAmount);
-		}
-	}
 
 	private Vector invertKb(Vector vector) {
 		vector.setZ(-1 * vector.getZ());
