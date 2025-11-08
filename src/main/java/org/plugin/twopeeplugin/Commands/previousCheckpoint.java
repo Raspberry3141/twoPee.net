@@ -45,7 +45,7 @@ public class previousCheckpoint implements CommandExecutor {
         List<Map<?,?>> checkpoints = courseYamlConfig.getConfig().getMapList("course." + currentWorld + ".checkpoint");
         if (currentCp==0 || checkpoints.isEmpty()) {
             progressManager.teleportToSpawn(player);
-        } else if (checkpoints.get(currentCp).size()>=currentCp) {
+        } else if (checkpoints.size()>=currentCp) {
             double x = (Integer) checkpoints.get(currentCp).get("x") + 0.5D;
             double y = (Integer) checkpoints.get(currentCp).get("y");
             double z = (Integer) checkpoints.get(currentCp).get("z") + 0.5D;

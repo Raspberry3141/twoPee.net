@@ -62,12 +62,12 @@ commands:
     usage: /prac
     aliases: [/prac]
     permission:
-      permission-message: You don't have permission to use this command!
+    permission-message: You don't have permission to use this command!
   unprac:
     usage: /unprac
     aliases: [ u, unprac ]
     permission:
-      permission-message: You don't have permission to use this command!
+    permission-message: You don't have permission to use this command!
 
   mapbuilder:
     usage: /mapbuilder

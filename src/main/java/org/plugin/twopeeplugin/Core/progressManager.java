@@ -111,6 +111,8 @@ public class progressManager {
 				teleport(player,player.getWorld().getSpawnLocation());
 				return;
 			}
+			List<Map<?,?>> cps = getCheckpoints(worldName);
+			if (cps ==null || cps.isEmpty()) return;
             double x = (Integer) getCheckpoints(worldName).get(index).get("x") + 0.5D;
             double y = (Integer) getCheckpoints(worldName).get(index).get("y");
             double z = (Integer) getCheckpoints(worldName).get(index).get("z") + 0.5D;
@@ -142,7 +144,8 @@ public class progressManager {
             new WorldCreator(location.getWorld().getName()).createWorld();
         }
         if (isAccessible(player,location.getWorld())) {
-            player.teleport(location);
+			if (location!=null)
+				player.teleport(location);
             chatMessenger.sendPreviousCheckpointMessage(player, cp);
         } else {
             chatMessenger.sendWhiteListed(player,location.getWorld().getName());

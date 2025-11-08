@@ -87,6 +87,7 @@ public class courseBuilder{
         world.setGameRuleValue("mobGriefing", falseString);
         world.setGameRuleValue("showDeathMessage", falseString);
         world.setGameRuleValue("randomTickSpeed","0");
+        world.setGameRuleValue("commandblockoutput",falseString);
         world.setStorm(false);
         world.setThundering(false);
         world.setWeatherDuration(Integer.MAX_VALUE);
