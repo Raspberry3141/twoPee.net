@@ -3,7 +3,7 @@ package org.plugin.twopeeplugin.Utils;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import org.plugin.twopeeplugin.Core.progressManager;
+import org.plugin.twopeeplugin.Core.parkour.progressManager;
 
 public class placeHolderAPIExpansion extends PlaceholderExpansion {
     private final progressManager progressmanager;

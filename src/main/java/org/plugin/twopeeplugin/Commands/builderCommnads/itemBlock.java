@@ -5,11 +5,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.plugin.twopeeplugin.Core.giveItemManager;
+import org.plugin.twopeeplugin.Core.housing.giveItemManager;
 import org.plugin.twopeeplugin.Utils.items;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 

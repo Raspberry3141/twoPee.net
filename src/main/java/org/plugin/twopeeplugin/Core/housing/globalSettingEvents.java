@@ -1,4 +1,4 @@
-package org.plugin.twopeeplugin.Core;
+package org.plugin.twopeeplugin.Core.housing;
 
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -15,6 +15,7 @@ import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.util.Vector;
+import org.plugin.twopeeplugin.Core.parkour.progressManager;
 import org.plugin.twopeeplugin.Utils.chatMessenger;
 import org.plugin.twopeeplugin.Utils.courseYamlConfig;
 

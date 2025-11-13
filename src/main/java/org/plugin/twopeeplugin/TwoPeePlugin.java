@@ -3,7 +3,8 @@ package org.plugin.twopeeplugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.plugin.twopeeplugin.Commands.*;
 import org.plugin.twopeeplugin.Commands.builderCommnads.*;
-import org.plugin.twopeeplugin.Core.*;
+import org.plugin.twopeeplugin.Core.housing.*;
+import org.plugin.twopeeplugin.Core.parkour.*;
 import org.plugin.twopeeplugin.Utils.placeHolderAPIExpansion;
 
 public final class TwoPeePlugin extends JavaPlugin {

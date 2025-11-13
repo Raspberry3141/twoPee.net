@@ -1,4 +1,4 @@
-package org.plugin.twopeeplugin.Core;
+package org.plugin.twopeeplugin.Core.housing;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

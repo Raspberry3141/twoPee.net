@@ -4,7 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.plugin.twopeeplugin.Core.courseBuilder;
+import org.plugin.twopeeplugin.Core.parkour.courseBuilder;
 
 public class mapbuilder implements CommandExecutor {
     courseBuilder coursebiulder;

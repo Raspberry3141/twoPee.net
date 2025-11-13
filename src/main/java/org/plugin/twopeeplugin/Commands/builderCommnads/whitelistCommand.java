@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.plugin.twopeeplugin.Core.whiteListWorldManager;
+import org.plugin.twopeeplugin.Core.housing.whiteListWorldManager;
 
 import java.util.Arrays;
 import java.util.Collections;

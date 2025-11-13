@@ -1,4 +1,4 @@
-package org.plugin.twopeeplugin.Core;
+package org.plugin.twopeeplugin.Core.parkour;
 
 import org.bukkit.Bukkit;
 import org.bukkit.enchantments.Enchantment;
@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.util.Vector;
 import org.plugin.twopeeplugin.TwoPeePlugin;
 

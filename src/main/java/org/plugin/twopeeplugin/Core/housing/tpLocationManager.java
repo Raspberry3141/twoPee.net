@@ -1,4 +1,4 @@
-package org.plugin.twopeeplugin.Core;
+package org.plugin.twopeeplugin.Core.housing;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.plugin.twopeeplugin.Core.parkour.progressManager;
 import org.plugin.twopeeplugin.Utils.chatMessenger;
 import org.plugin.twopeeplugin.Utils.tpLocationsYamlConfig;
 

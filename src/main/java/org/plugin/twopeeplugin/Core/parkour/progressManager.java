@@ -1,10 +1,11 @@
-package org.plugin.twopeeplugin.Core;
+package org.plugin.twopeeplugin.Core.parkour;
 
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.plugin.twopeeplugin.Core.housing.itemManager;
 import org.plugin.twopeeplugin.Utils.chatMessenger;
 import org.plugin.twopeeplugin.Utils.courseYamlConfig;
 

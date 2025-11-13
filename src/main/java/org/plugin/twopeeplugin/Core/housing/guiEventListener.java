@@ -1,9 +1,10 @@
-package org.plugin.twopeeplugin.Core;
+package org.plugin.twopeeplugin.Core.housing;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.plugin.twopeeplugin.Core.parkour.progressManager;
 
 import java.util.HashMap;
 import java.util.UUID;

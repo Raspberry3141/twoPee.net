@@ -1,8 +1,9 @@
-package org.plugin.twopeeplugin.Core;
+package org.plugin.twopeeplugin.Core.housing;
 
 import lol.pyr.znpcsplus.api.event.NpcInteractEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.plugin.twopeeplugin.Core.parkour.progressManager;
 import org.plugin.twopeeplugin.Utils.chatMessenger;
 
 public class znpcListener implements Listener {

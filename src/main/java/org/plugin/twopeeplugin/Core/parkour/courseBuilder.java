@@ -1,4 +1,4 @@
-package org.plugin.twopeeplugin.Core;
+package org.plugin.twopeeplugin.Core.parkour;
 
 import org.bukkit.*;
 import org.bukkit.entity.Player;

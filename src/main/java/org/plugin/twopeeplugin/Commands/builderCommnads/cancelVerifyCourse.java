@@ -4,9 +4,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.plugin.twopeeplugin.Core.groupManager;
+import org.plugin.twopeeplugin.Core.housing.groupManager;
 import org.plugin.twopeeplugin.Utils.chatMessenger;
-import org.plugin.twopeeplugin.Core.courseBuilder;
+import org.plugin.twopeeplugin.Core.parkour.courseBuilder;
 
 public class cancelVerifyCourse implements CommandExecutor {
     courseBuilder coursebuilder;

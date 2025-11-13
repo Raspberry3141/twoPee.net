@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.plugin.twopeeplugin.Utils.courseYamlConfig;
-import org.plugin.twopeeplugin.Core.progressManager;
+import org.plugin.twopeeplugin.Core.parkour.progressManager;
 
 import static org.bukkit.Bukkit.getPlayer;
 
