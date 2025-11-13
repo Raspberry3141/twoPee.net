@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
@@ -209,8 +210,17 @@ public class globalSettingEvents implements Listener {
         }
     }
 
+	@EventHandler
+	public void onBlockBreak(BlockBreakEvent event) {
+		
+	}
+
+	private boolean isPlant(Material material) {
+		return true;
+	}
+
     @EventHandler
-    private void onSandFall(EntityChangeBlockEvent event){
+    public void onSandFall(EntityChangeBlockEvent event){
         if(event.getEntityType()== EntityType.FALLING_BLOCK && event.getTo()==Material.AIR){
             event.setCancelled(true);
             event.getBlock().getState().update(false, false);

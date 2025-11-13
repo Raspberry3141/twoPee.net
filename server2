@@ -1,21 +1,15 @@
-scoreboard manager
-tab manager
-text ob screen
-chat manager
-rank manager
-group manager
-map maker helper
-party class
-floating text
-better sound system
-parkour timer
-point system
-ghost mode
-auto item give
-list of joined pplayers
---------
-fix prac in the air
 floating blocks
+party class
+auto item give
+text on screen
+chat manager
 automate mapmaker init
+floating text
+fix parkour timer
+ghost mode in prac
 better browsing system
-
+permission/rank/group manager
+scoreboard manager(add /help)
+tab manager
+point system
+map maker helper
