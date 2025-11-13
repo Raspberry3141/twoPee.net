@@ -1,5 +1,6 @@
 scoreboard manager
 tab manager
+text ob screen
 chat manager
 rank manager
 group manager
@@ -10,8 +11,11 @@ better sound system
 parkour timer
 point system
 ghost mode
-point system
+auto item give
+list of joined pplayers
 --------
+fix prac in the air
+floating blocks
 automate mapmaker init
 better browsing system
 
