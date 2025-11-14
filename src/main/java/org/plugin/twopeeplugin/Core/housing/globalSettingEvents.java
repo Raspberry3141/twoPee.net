@@ -1,6 +1,8 @@
 package org.plugin.twopeeplugin.Core.housing;
 
 import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -16,6 +18,7 @@ import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.util.Vector;
+import org.plugin.twopeeplugin.TwoPeePlugin;
 import org.plugin.twopeeplugin.Core.parkour.progressManager;
 import org.plugin.twopeeplugin.Utils.chatMessenger;
 import org.plugin.twopeeplugin.Utils.courseYamlConfig;
@@ -210,13 +213,29 @@ public class globalSettingEvents implements Listener {
         }
     }
 
-	@EventHandler
-	public void onBlockBreak(BlockBreakEvent event) {
-		
-	}
 
 	private boolean isPlant(Material material) {
-		return true;
+		switch (material) {
+            case YELLOW_FLOWER:
+            case RED_ROSE:
+			case FLOWER_POT:
+            case LONG_GRASS:
+            case DOUBLE_PLANT:
+            case CROPS:
+            case CARROT:
+            case POTATO:
+            case MELON_STEM:
+            case PUMPKIN_STEM:
+            case SUGAR_CANE_BLOCK:
+            case CACTUS:
+			case LADDER:
+			case TRAP_DOOR:
+			case DARK_OAK_DOOR:
+			case SAPLING:
+                return true;
+            default:
+                return false;
+        }
 	}
 
     @EventHandler
