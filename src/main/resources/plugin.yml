@@ -37,6 +37,11 @@ commands:
     aliases: [p, pcp]
     permission:
     permission-message: You don't have permission to use this command!
+  reset:
+    usage: /reset
+    aliases: [reset]
+    permission:
+    permission-message: You don't have permission to use this command!
   gap:
     usage: /gap
     aliases: [ gap ]

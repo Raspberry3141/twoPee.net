@@ -93,7 +93,6 @@ public class courseBuilder{
         world.setWeatherDuration(Integer.MAX_VALUE);
         world.setThunderDuration(0);
         createBorder(world);
-
     }
 
     private void createBorder(World world) {

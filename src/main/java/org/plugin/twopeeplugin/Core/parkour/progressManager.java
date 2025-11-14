@@ -45,7 +45,9 @@ public class progressManager {
         parkourtimer.stopTime(player.getUniqueId(),player.getWorld().getName());
         if (!pracmanager.isInPrac(player)) {
             saveLastPos(player);
-        }
+        } else {
+			pracmanager.leavePrac(player);
+		}
         itemmanager.saveInventory(player);
     }
 

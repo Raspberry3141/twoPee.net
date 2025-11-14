@@ -25,7 +25,7 @@ public class testCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (Integer.parseInt(strings[0]) == 0) {
-            coursebuilder.initializeNewCourse((Player) commandSender);
+            ((Player)commandSender).hidePlayer((Player) commandSender);
         } else if (Integer.parseInt(strings[0]) == 1) {
             if (getWorld(strings[1])==null) {
                 new WorldCreator(strings[1]).createWorld();

@@ -1,8 +1,6 @@
 package org.plugin.twopeeplugin.Core.housing;
 
 import org.bukkit.*;
-import org.bukkit.Bukkit;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -10,7 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
@@ -18,7 +15,6 @@ import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.util.Vector;
-import org.plugin.twopeeplugin.TwoPeePlugin;
 import org.plugin.twopeeplugin.Core.parkour.progressManager;
 import org.plugin.twopeeplugin.Utils.chatMessenger;
 import org.plugin.twopeeplugin.Utils.courseYamlConfig;
@@ -31,10 +27,12 @@ public class globalSettingEvents implements Listener {
 
     private progressManager progressmanager;
     private groupManager groupmanager;
+	private itemManager itemmanager;
 
-    public globalSettingEvents(progressManager pm, groupManager gp) {
+    public globalSettingEvents(progressManager pm, groupManager gp,itemManager im) {
         progressmanager = pm;
         groupmanager = gp;
+		itemmanager = im;
     }
 
     @EventHandler
@@ -71,7 +69,7 @@ public class globalSettingEvents implements Listener {
 
     @EventHandler
     public void onPlayerChangeWorld(PlayerChangedWorldEvent event) {
-        event.getPlayer().getInventory().clear();
+		itemmanager.resetInventory(event.getPlayer());
         onEnter(event);
     }
 
@@ -214,29 +212,6 @@ public class globalSettingEvents implements Listener {
     }
 
 
-	private boolean isPlant(Material material) {
-		switch (material) {
-            case YELLOW_FLOWER:
-            case RED_ROSE:
-			case FLOWER_POT:
-            case LONG_GRASS:
-            case DOUBLE_PLANT:
-            case CROPS:
-            case CARROT:
-            case POTATO:
-            case MELON_STEM:
-            case PUMPKIN_STEM:
-            case SUGAR_CANE_BLOCK:
-            case CACTUS:
-			case LADDER:
-			case TRAP_DOOR:
-			case DARK_OAK_DOOR:
-			case SAPLING:
-                return true;
-            default:
-                return false;
-        }
-	}
 
     @EventHandler
     public void onSandFall(EntityChangeBlockEvent event){

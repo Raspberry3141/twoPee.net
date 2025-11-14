@@ -31,7 +31,7 @@ public final class TwoPeePlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(checkpointlistener, this);
         getServer().getPluginManager().registerEvents(tpmanager,this);
         getServer().getPluginManager().registerEvents(new znpcListener(guiListener,groupManager, mostPopularTracker),this);
-        getServer().getPluginManager().registerEvents(new globalSettingEvents(progressmanager,groupManager),this);
+        getServer().getPluginManager().registerEvents(new globalSettingEvents(progressmanager,groupManager,itemmanager),this);
         getServer().getPluginManager().registerEvents(new knockbackEvent(pracmanager),this);
         getServer().getPluginManager().registerEvents(giveitemmanager,this);
         getServer().getPluginManager().registerEvents(pracmanager,this);
@@ -41,6 +41,7 @@ public final class TwoPeePlugin extends JavaPlugin {
         this.getCommand("help").setExecutor(new help());
         this.getCommand("lobby").setExecutor(new lobby());
         this.getCommand("pcp").setExecutor(new previousCheckpoint());
+        this.getCommand("reset").setExecutor(new reset(checkpointlistener));
         this.getCommand("sword").setExecutor(new sword());
         this.getCommand("pcpitem").setExecutor(new pcpitem(giveitemmanager));
         this.getCommand("mapbuilder").setExecutor(new mapbuilder(coursebuilder));

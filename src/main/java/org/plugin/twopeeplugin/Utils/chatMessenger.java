@@ -141,6 +141,11 @@ public class chatMessenger {
 		playLevelUpSound(player);
 	}
 
+	public static void sendParkourReset(Player player) {
+		player.sendMessage(ChatColor.YELLOW + "Parkour Restarted!");
+		playLevelUpSound(player);
+	}
+
 	public static void sendParkourEnd(Player player, String time) {
 		player.sendMessage(ChatColor.YELLOW + "Parkour Finished in " + time + "!");
 		playLevelUpSound(player);
