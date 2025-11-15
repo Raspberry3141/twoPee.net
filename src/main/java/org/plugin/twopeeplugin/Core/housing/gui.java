@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.plugin.twopeeplugin.Utils.courseYamlConfig;
 
+import java.text.ParsePosition;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -21,8 +22,10 @@ public class gui {
 	private Player player;
 	private Inventory inventory;
 	private YamlConfiguration config;
+	private PlayerCountTracker playercountertracker;
 
-	public gui(Player plyr, String title) {
+	public gui(Player plyr, String title,PlayerCountTracker pct) {
+		playercountertracker = pct;
 		config = courseYamlConfig.getConfig();
 		player = plyr;
 		currentPage = 1;
@@ -88,11 +91,11 @@ public class gui {
 	private void addInfo(ItemStack item, String course) {
 		ItemMeta meta = item.getItemMeta();
 		ArrayList<String> lore = new ArrayList<String>();
-		lore.add(parseDifficulty(config.getString("course." + course + ".difficulty")));
-		lore.add("&6&lStatus: " + completionInfo(course));
-		lore.add(parseColor("&2&lAuthor: " + config.getString("course." + course + ".author")));
-		lore.add(parseColor("&e&lPlayers: "));
-		//TODO implement player counter and difficulty system
+		lore.add(parseColor("&0---------------------------"));
+		lore.add( parseColor("&cDifficulty: ") + parseDifficulty(config.getString("course." + course + ".difficulty")));
+		lore.add(parseColor("&6Clear Status: " + completionInfo(course)));
+		lore.add(parseColor("&2Author: " + config.getString("course." + course + ".author")));
+		lore.add(parseColor("&ePlayers: &b" + playercountertracker.getPlayerCount(course)));
 		lore.add("ID: "+ course);
 		meta.setDisplayName(parseColor("&l&e" + config.getString("course." + course + ".display name")));
 		meta.setLore(lore);
@@ -100,13 +103,14 @@ public class gui {
 	}
 
 	private String parseDifficulty(String s) {
+		if (s==null) return parseColor("&7&l[Unrated]");
 		switch (s) {
 		 	case "unrated":
 				return parseColor("&7&l[Unrated]");
 			case "starter":
 				return parseColor("&a&l[Starter]");
 			case "easy":
-				return parseColor("&1&l[Easy]");
+				return parseColor("&b&l[Easy]");
 			case "medium":
 				return parseColor("&6&l[Medium]");
 			case "difficult":
@@ -127,9 +131,9 @@ public class gui {
 		UUID uuid = player.getUniqueId();
 		int completion = courseYamlConfig.getConfig().getInt("course." + course + ".progress." + uuid + ".completion");
 		if (completion == 0) {
-			return "New";
+			return "&4Not Finished";
 		} else
-			return "Finished";
+			return "&a&lFinished";
 	}
 
 	private void fillInItems(List<ItemStack> items) {

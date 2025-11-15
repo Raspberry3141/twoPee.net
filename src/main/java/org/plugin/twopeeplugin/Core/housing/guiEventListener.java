@@ -11,13 +11,15 @@ import java.util.UUID;
 
 public class guiEventListener implements Listener {
     private final HashMap<UUID, gui> guiMapping;
+	private PlayerCountTracker playercounttracker;
 
-    public guiEventListener() {
+    public guiEventListener(PlayerCountTracker pct) {
         guiMapping = new HashMap<>();
+		playercounttracker = pct;
 
     }
     public void open(Player player) {
-        guiMapping.put(player.getUniqueId(),new gui(player,"Map Browser"));
+        guiMapping.put(player.getUniqueId(),new gui(player,"Map Browser",playercounttracker));
     }
     @EventHandler
     private void onclick(InventoryClickEvent event) {
@@ -32,7 +34,7 @@ public class guiEventListener implements Listener {
             int currentPage = GUI.getCurrentPage();
             GUI.changePage(++currentPage);
         } else {
-            String worldName = event.getCurrentItem().getItemMeta().getLore().get(4).substring(4);
+            String worldName = event.getCurrentItem().getItemMeta().getLore().get(5).substring(4);
             progressManager.teleport((Player) event.getWhoClicked(),worldName);
         }
         event.setCancelled(true);
