@@ -1,11 +1,20 @@
+better browsing system
 party class
 chat manager
 text on screen
-automate mapmaker init
-ghost mode in prac
-better browsing system
 point system
+join message
 
-prac
+rating system
+prac armor
 reset command
 auto item give
+automate mapmaker init
+
+MAP NAME
+- (bold red) Difficulty: [Starter] [Easy] [Medium] [Hard] [Challenge]
+- (bold orange) Status: [Finished(green)/Incomplete(red)]
+- (bold dark green)Author: [author](dark grey)
+- (bold yellow) Players: [# in light blue]
+- (dark grey)ID: Raspberry50
+

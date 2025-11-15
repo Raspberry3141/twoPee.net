@@ -61,6 +61,7 @@ public class courseBuilder{
         courseYamlConfig.getConfig().set(path + ".display name", worldName);
         courseYamlConfig.getConfig().set(path + ".verified", false);
         courseYamlConfig.getConfig().set(path + ".verifiable", false);
+        courseYamlConfig.getConfig().set(path + ".difficulty", "unrated");
         courseYamlConfig.getInstance().save();
         addToCurrentWorkingWorld(worldName,playerName);
     }
@@ -71,7 +72,13 @@ public class courseBuilder{
         wc.generatorSettings("2;0;1;");
         wc.createWorld();
         disableMechanics(worldName);
+		initPlatform(Bukkit.getWorld(worldName));
     }
+
+	private void initPlatform(World world) {
+		world.getBlockAt(new Location(world, 0, 64, 0)).setType(Material.BEDROCK);
+		world.setSpawnLocation(0, 65, 0);
+	}
 
     private void disableMechanics(String worldName) {
         World world = Bukkit.getWorld(worldName);

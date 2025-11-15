@@ -13,7 +13,6 @@ import org.plugin.twopeeplugin.Utils.courseYamlConfig;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
@@ -89,24 +88,40 @@ public class gui {
 	private void addInfo(ItemStack item, String course) {
 		ItemMeta meta = item.getItemMeta();
 		ArrayList<String> lore = new ArrayList<String>();
-		lore.add(course);
-		lore.add("Author: " + config.getString("course." + course + ".author"));
-		lore.add("Date: " + config.getString("course." + course + ".date"));
-		lore.add("Status: " + completionInfo(course));
-		// lore.add("Attempts: " + attempts(course));
-		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',"&c" + config.getString("course." + course + ".display name")));
+		lore.add(parseDifficulty(config.getString("course." + course + ".difficulty")));
+		lore.add("&6&lStatus: " + completionInfo(course));
+		lore.add(parseColor("&2&lAuthor: " + config.getString("course." + course + ".author")));
+		lore.add(parseColor("&e&lPlayers: "));
+		//TODO implement player counter and difficulty system
+		lore.add("ID: "+ course);
+		meta.setDisplayName(parseColor("&l&e" + config.getString("course." + course + ".display name")));
 		meta.setLore(lore);
 		item.setItemMeta(meta);
 	}
 
-	private String attempts(String course) {
-		List<Map<?,?>>  completion = courseYamlConfig.getConfig().getMapList("course." + course + ".progress");
-		if (completion!=null) {
-			return Integer.toString(completion.size());
-		} else {
-			return Integer.toString(0);
+	private String parseDifficulty(String s) {
+		switch (s) {
+		 	case "unrated":
+				return parseColor("&7&l[Unrated]");
+			case "starter":
+				return parseColor("&a&l[Starter]");
+			case "easy":
+				return parseColor("&1&l[Easy]");
+			case "medium":
+				return parseColor("&6&l[Medium]");
+			case "difficult":
+				return parseColor("&4&l[Difficult]");
+			case "challenge":
+				return parseColor("&e&l[Challenge]");
+		 	default:
+				return parseColor("&7&l[Unrated]");
 		}
 	}
+
+	private String parseColor(String s){
+		return ChatColor.translateAlternateColorCodes('&',s);
+	}
+
 
 	private String completionInfo(String course) {
 		UUID uuid = player.getUniqueId();

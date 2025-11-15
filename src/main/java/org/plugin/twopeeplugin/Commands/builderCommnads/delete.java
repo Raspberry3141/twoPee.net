@@ -6,6 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.plugin.twopeeplugin.Utils.courseYamlConfig;
+import org.plugin.twopeeplugin.Utils.playerYamlConfig;
 
 public class delete implements CommandExecutor {
     @Override
@@ -13,6 +14,8 @@ public class delete implements CommandExecutor {
         if (commandSender instanceof Player) {
 			String worldname = ((Player) commandSender).getWorld().getName();
 			courseYamlConfig.getConfig().set("course." + worldname, null);
+			playerYamlConfig.getConfig().set(((Player)commandSender).getName() + "working world", null);
+			playerYamlConfig.getInstance().save();
 			courseYamlConfig.getInstance().save();
             return true;
         }

@@ -32,7 +32,7 @@ public class guiEventListener implements Listener {
             int currentPage = GUI.getCurrentPage();
             GUI.changePage(++currentPage);
         } else {
-            String worldName = event.getCurrentItem().getItemMeta().getLore().get(0);
+            String worldName = event.getCurrentItem().getItemMeta().getLore().get(4).substring(4);
             progressManager.teleport((Player) event.getWhoClicked(),worldName);
         }
         event.setCancelled(true);

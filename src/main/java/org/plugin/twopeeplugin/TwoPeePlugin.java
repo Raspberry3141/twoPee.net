@@ -62,6 +62,7 @@ public final class TwoPeePlugin extends JavaPlugin {
         this.getCommand("unprac").setExecutor(new unprac(pracmanager));
         this.getCommand("gap").setExecutor(new goldenApple());
         this.getCommand("delete").setExecutor(new delete());
+		this.getCommand("rate").setExecutor(new rate());
         new placeHolderAPIExpansion(progressmanager).register();
 
     }

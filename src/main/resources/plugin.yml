@@ -13,6 +13,10 @@ commands:
     usage: /delte
     aliases: [ delte ]
     permission: twopee.op
+  rate:
+    usage: /rate
+    aliases: [ rate ]
+    permission: twopee.op
   test:
     usage: /test
     aliases: [ test ]
