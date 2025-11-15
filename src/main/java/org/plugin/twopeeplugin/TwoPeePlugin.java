@@ -41,7 +41,7 @@ public final class TwoPeePlugin extends JavaPlugin {
         this.getCommand("help").setExecutor(new help());
         this.getCommand("lobby").setExecutor(new lobby());
         this.getCommand("pcp").setExecutor(new previousCheckpoint());
-        this.getCommand("reset").setExecutor(new reset(checkpointlistener));
+        this.getCommand("reset").setExecutor(new reset(checkpointlistener,itemmanager));
         this.getCommand("sword").setExecutor(new sword());
         this.getCommand("pcpitem").setExecutor(new pcpitem(giveitemmanager));
         this.getCommand("mapbuilder").setExecutor(new mapbuilder(coursebuilder));

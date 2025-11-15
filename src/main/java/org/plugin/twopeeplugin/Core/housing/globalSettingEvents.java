@@ -115,6 +115,10 @@ public class globalSettingEvents implements Listener {
     }
 
     @EventHandler
+    public void onPlayerConnect(PlayerJoinEvent event) {
+		event.setJoinMessage(event.getPlayer().getName() + " &ejoined the world!");
+    }
+    @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         event.getPlayer().setSaturation(Float.MAX_VALUE);
         if (getWorld("lobby")==null) {

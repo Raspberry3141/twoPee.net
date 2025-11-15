@@ -162,7 +162,7 @@ public class progressManager {
         }
         if (isAccessible(player,location.getWorld())) {
             player.teleport(location);
-            chatMessenger.sendTeleportMessage(player,location);
+            // chatMessenger.sendTeleportMessage(player,location);
         } else {
             chatMessenger.sendWhiteListed(player,location.getWorld().getName());
         }
@@ -178,7 +178,7 @@ public class progressManager {
         }
         if (isAccessible(player,getWorld(worldName))) {
             player.teleport(getWorld(worldName).getSpawnLocation());
-            chatMessenger.sendTeleportMessage(player,getWorld(worldName).getSpawnLocation());
+            // chatMessenger.sendTeleportMessage(player,getWorld(worldName).getSpawnLocation());
         }  else {
             chatMessenger.sendWhiteListed(player,worldName);
         }

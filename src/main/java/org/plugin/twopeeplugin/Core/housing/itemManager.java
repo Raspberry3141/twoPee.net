@@ -36,7 +36,7 @@ public class itemManager {
     }
 
     public void loadInventory(Player player) {
-        player.getInventory().clear();
+		resetInventory(player);
         ConfigurationSection section = inventoryYamlConfig.getConfig().getConfigurationSection(player.getWorld().getName()+"."+player.getUniqueId()+".inventory");
         if (section==null) return;
         for (String key : section.getKeys(false)) {
