@@ -4,32 +4,59 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bukkit.entity.Player;
-import org.plugin.twopeeplugin.Core.housing.party;
+import org.plugin.twopeeplugin.Core.housing.Party;
 
 public class partyManager {
-	private Map<Player, party> parties;
+    public final Map<Player, Party> playerParty = new HashMap<>();
+    private final Map<Player, Invite> invites = new HashMap<>();
 
-	public partyManager() {
-		parties = new HashMap<>();
-	}
-	public void createParty(Player leader) {
-		party party = new party();
-		parties.put(leader, party);
-	}
+    public Party getParty(Player p) {
+        return playerParty.get(p);
+    }
 
-	public void joinParty(Player leader, Player player) {
-		parties.get(leader).members.add(player);
-	}
+    public boolean isInParty(Player p) {
+        return playerParty.containsKey(p);
+    }
 
-	public void invitePlayer() {
-	}
+    public Party createParty(Player leader) {
+        Party party = new Party(leader);
+        playerParty.put(leader, party);
+        return party;
+    }
 
-	public void changeLeader() {
-	}
+    public void disband(Party party) {
+        for (Player p : party.getMembers()) {
+            playerParty.remove(p);
+            p.sendMessage("§cYour party has been disbanded!");
+        }
+    }
 
-	public void disbandParty(Player leader) {
-	}
+    public void addInvite(Player sender, Player target) {
+        invites.put(target, new Invite(sender, target));
+    }
 
-	public void toggleProtection() {
-	}
+    public Invite getInvite(Player target) {
+        Invite inv = invites.get(target);
+        if (inv != null && inv.isExpired()) {
+            invites.remove(target);
+            return null;
+        }
+        return inv;
+    }
+
+    public void acceptInvite(Player target) {
+        Invite inv = getInvite(target);
+        if (inv == null) return;
+
+        Player leader = inv.getSender();
+        Party p = playerParty.get(leader);
+
+        if (p == null) return;
+
+        p.addMember(target);
+        playerParty.put(target, p);
+
+        p.sendMessage("§a" + target.getName() + " joined the party!");
+        invites.remove(target);
+    }
 }

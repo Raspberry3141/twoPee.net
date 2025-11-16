@@ -26,6 +26,11 @@ commands:
     aliases: [help]
     permission: 
     permission-message: You don't have permission to use this command!
+  party:
+    usage: /paarty
+    aliases: [party]
+    permission: 
+    permission-message: You don't have permission to use this command!
   browse:
     usage: /browse
     aliases: [b,browser]
